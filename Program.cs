@@ -1,21 +1,16 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Threading;
-using System.IO;
 
 namespace rpg
 
-{ 
-    internal class Program
 {
-    static void Main(string[] args)
+    internal class Program
     {
+        static void Main(string[] args)
+        {
             //все переменные
             int percent = 100;
-            const int y = 0; 
+            const int y = 0;
             int viborodin = 1;
             string viborodinasd = viborodin.ToString();
             int vibordva = 2;
@@ -37,13 +32,8 @@ namespace rpg
             int kripscrabshp = 10;
             int kripscrabsdam = 1;
             int x = 1;
-            int defense = 0;
-            float HealthPlayer = 20;
-            int bonusdam = 0;
-            int DamagePlayer = 5 + bonusdam;
-            int defensedamitogotcrabs = kripscrabsdam - defense;
             int ShopMenu2 = 0;
-            int MainMenu = 1;
+            int MainMenu = 0;
             int cena0 = 1;
             int cena1 = 5;
             int cena2 = 7;
@@ -85,87 +75,97 @@ namespace rpg
             string ostrovK = "Остров малых крабов";
             string ostrovD = "Остров Друидов";
             string ostrovT = "Остров Траллов";
-            int money = 0;
+
             Console.WriteLine("Привет, как тебя зовут?");
-        string NAME = Console.ReadLine();
+            string NAME = Console.ReadLine();
             Console.Clear();
-            while (true) {
-            float vampiricbuy = 0;
-            float vampiric = DamagePlayer / ((percent - 90) + vampiricbuy);
-            float itogovoehp = vampiric + HealthPlayer;
-            float itogvamp = HealthPlayer - DamagePlayer + itogovoehp;
-        string[] smile = { " ", "W", "-", "о", "О" };
-        Random randomsmile = new Random(); ;
-        int randsmile = randomsmile.Next(smile.Length);
-        //Главное меню
-        Console.Clear();
-        Console.WriteLine($"                 Привет,{NAME}, это игровое меню, здесь ты можешь                     ");
-        Console.WriteLine("                   приодеть персонажа, а так же фармить с лагерей крипов               ");
-        Console.WriteLine("         Куда отправимся?                                                              ");
-        Console.WriteLine("                                                                                       ");
-        Console.WriteLine(@"                             _______                 <---Тут инфа о голове            ");
-        Console.WriteLine($@"Денег: {money} (§)                /       \                                          ");
-        Console.WriteLine($@"                           /         \             здоровье персонажа: {HealthPlayer}");
-        Console.WriteLine($@"                          |           |            урон персонажа {DamagePlayer}     ");
-        Console.WriteLine($@"                          |   -    -  |                  вампиризм: {itogvamp}                             ");
-        Console.WriteLine($@"                          |           |              броня: {defense}                                  ");
-        Console.WriteLine($@"                          |     {smile[randsmile]}     |                             ");
-        Console.WriteLine(@"                           \         /                                                ");
-        Console.WriteLine(@"                            \       /    |                                            ");
-        Console.WriteLine(@"                             \     /     |                                            ");
-        Console.WriteLine(@"                                |        |                                            ");
-        Console.WriteLine(@"                                |        ┬              <---+                         ");
-        Console.WriteLine(@"     инфа о артефакте--->=======|========|                                            ");
-        Console.WriteLine(@"                                |        |                                            ");
-        Console.WriteLine(@"                                |        |         открыть инвентарь: /invent                                  ");
-        Console.WriteLine(@"                              /   \                                                   ");
-        Console.WriteLine(@"                             /     \                                                  ");
-        Console.WriteLine(@"                            /       \                                                 ");
-        Console.WriteLine(@"                           /         \                 <------Тут Инфа о ногах        ");
-        Console.WriteLine(@"                         ---         ---                                              ");
-        Console.WriteLine(@"                                                                                      ");
-        Console.WriteLine(@"      (1).Магазин обычных вещей                            (2). Магазин артефактов    ");
-        Console.WriteLine(@"         |-------------|                                     |-------------|          ");
-        Console.WriteLine(@"         |             |                                     |             |          ");
-        Console.WriteLine(@"         |             |                                     |             |          ");
-        Console.WriteLine(@"         |      ☻      |                                     |     *_*     |          ");
-        Console.WriteLine(@"         |-------------|                                     |-------------|          ");
-        Console.WriteLine(@"         |             |                                     |             |          ");
-        Console.WriteLine(@"         ---------------                                     ---------------          ");
-        Console.WriteLine(@"                                                                                      ");
-        Console.WriteLine(@"                                                                                      ");
-        Console.WriteLine(@"                                                                                      ");
-            Console.ForegroundColor = ConsoleColor.Green;
-        Console.WriteLine("               ---- ▲ ------- ▲  ▲                                                    ");
-        Console.WriteLine("        --------- ▲ ---------- -----                                                  ");
-        Console.WriteLine("    --------  ------------- ▲ ---                                                     ");
-        Console.WriteLine("      ------------- ▲    -----------                                                  ");
-        Console.WriteLine($@"           (3). {ostrovK}                                                   ");
-        Console.WriteLine("                ---- ▲ --- ------- ▲ ---------                                        ");
-            Console.ForegroundColor = ConsoleColor.Yellow;
-        Console.WriteLine("                                                                                      ");
-        Console.WriteLine("            ------------------++++++----                                              ");
-        Console.WriteLine("                 -----------------++++-----------+++                                  ");
-        Console.WriteLine("              -------------++++++-------------+++++-----+++++++---                    ");
-        Console.WriteLine("                   -----------+++++++----------------++                               ");
-        Console.WriteLine($@"              ---------+++++++--------------  (4). {ostrovD}                     ");
-        Console.WriteLine("                          ---------+++++++--------------                              ");
-            Console.ForegroundColor = ConsoleColor.DarkRed;
-        Console.WriteLine("                                                                                      ");
-        Console.WriteLine("                                ----§§§§§--------§§§§---§§§§§§§--------               ");
-        Console.WriteLine("                               §§§§§--------§§§-0-----§§§§0000-----                   ");
-        Console.WriteLine("                              ------00§-----0000--§§§§---------                       ");
-        Console.WriteLine("                           -----§§§§§-------§§§§-------0000-=-----§§§§------          ");
-        Console.WriteLine($@"                           -------§§§§------ (5). {ostrovT} -------§§§§------    ");
-        Console.WriteLine("                                       -------§§§§§---0000§§§------                   ");
-        Console.WriteLine("                                                                                      ");
-        Console.WriteLine("                                                                                      ");
-        Console.WriteLine("                                                                                      ");
-            Console.ForegroundColor = ConsoleColor.White;
-            int nummenu = Convert.ToInt32(Console.ReadLine());
-            MainMenu = nummenu + x;
-            if (MainMenu == 2)
+            while (true)
             {
+                int bonusdef = 0;
+                int defense = 0 + bonusdef;
+                int defensedamitogotcrabs = kripscrabsdam - defense;
+
+                float HealthPlayer = 20;
+                int bonusdam = 0;
+                int DamagePlayer = 5 + bonusdam;
+                int money = 0;
+                float vampiricbuy = 0;
+                float vampiric = DamagePlayer / ((percent - 90) + vampiricbuy);
+                float itogovoehpvamp = vampiric + HealthPlayer;
+                float itogvamp = HealthPlayer - DamagePlayer + itogovoehpvamp;
+                string[] smile = { " ", "W", "-", "о", "О" };
+                Random randomsmile = new Random(); ;
+                int randsmile = randomsmile.Next(smile.Length);
+                //Главное меню
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.Clear();
+                Console.WriteLine($"                 Привет,{NAME}, это игровое меню, здесь ты можешь                     ");
+                Console.WriteLine("                   приодеть персонажа, а так же фармить с лагерей крипов               ");
+                Console.WriteLine("         Куда отправимся?                                                              ");
+                Console.WriteLine("                                                                                       ");
+                Console.WriteLine(@"                            _______                 <---Тут инфа о голове            ");
+                Console.WriteLine($@"                           /       \         Золото: {money} (§)                     ");
+                Console.WriteLine($@"                          /         \             здоровье персонажа: {HealthPlayer}");
+                Console.WriteLine($@"                          |          |           урон персонажа {DamagePlayer}     ");
+                Console.WriteLine($@"                          |  -    -  |                 вампиризм: {itogvamp}                             ");
+                Console.WriteLine($@"                          |          |             броня: {defense}                                  ");
+                Console.WriteLine($@"                          |    {smile[randsmile]}     |                             ");
+                Console.WriteLine(@"                           \         /                                                ");
+                Console.WriteLine(@"                            \       /    |                                            ");
+                Console.WriteLine(@"                             \     /     |                                            ");
+                Console.WriteLine(@"                                |        |                                            ");
+                Console.WriteLine(@"                                |        ┬              <---+                         ");
+                Console.WriteLine(@"     инфа о артефакте--->=======|========|                                            ");
+                Console.WriteLine(@"                                |        |                                            ");
+                Console.WriteLine(@"                                |        |         открыть инвентарь: /invent                                  ");
+                Console.WriteLine(@"                              /   \                                                   ");
+                Console.WriteLine(@"                             /     \                                                  ");
+                Console.WriteLine(@"                            /       \                                                 ");
+                Console.WriteLine(@"                           /         \                 <------Тут Инфа о ногах        ");
+                Console.WriteLine(@"                         ---         ---                                              ");
+                Console.WriteLine(@"                                                                                      ");
+                Console.WriteLine(@"      (1). Магазин обычных вещей                           (2). Магазин артефактов    ");
+                Console.WriteLine(@"         |-------------|                                     |-------------|          ");
+                Console.WriteLine(@"         |             |                                     |             |          ");
+                Console.WriteLine(@"         |             |                                     |             |          ");
+                Console.WriteLine(@"         |      ☻      |                                     |     *_*     |          ");
+                Console.WriteLine(@"         |-------------|                                     |-------------|          ");
+                Console.WriteLine(@"         |             |                                     |             |          ");
+                Console.WriteLine(@"         ---------------                                     ---------------          ");
+                Console.WriteLine(@"                                                                                      ");
+                Console.WriteLine(@"                                                                                      ");
+                Console.WriteLine(@"                                                                                      ");
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("               ---- ▲ ------- ▲  ▲                                                    ");
+                Console.WriteLine("        --------- ▲ ---------- -----                                                  ");
+                Console.WriteLine("    --------  ------------- ▲ ---                                                     ");
+                Console.WriteLine("      ------------- ▲    -----------                                                  ");
+                Console.WriteLine($@"           (3). {ostrovK}                                                   ");
+                Console.WriteLine("                ---- ▲ --- ------- ▲ ---------                                        ");
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("                                                                                      ");
+                Console.WriteLine("            ------------------++++++----                                              ");
+                Console.WriteLine("                 -----------------++++-----------+++                                  ");
+                Console.WriteLine("              -------------++++++-------------+++++-----+++++++---                    ");
+                Console.WriteLine("                   -----------+++++++----------------++                               ");
+                Console.WriteLine($@"              ---------+++++++--------------  (4). {ostrovD}                     ");
+                Console.WriteLine("                          ---------+++++++--------------                              ");
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.WriteLine("                                                                                      ");
+                Console.WriteLine("                                ----§§§§§--------§§§§---§§§§§§§--------               ");
+                Console.WriteLine("                               §§§§§--------§§§-0-----§§§§0000-----                   ");
+                Console.WriteLine("                              ------00§-----0000--§§§§---------                       ");
+                Console.WriteLine("                           -----§§§§§-------§§§§-------0000-=-----§§§§------          ");
+                Console.WriteLine($@"                           -------§§§§------ (5). {ostrovT} -------§§§§------    ");
+                Console.WriteLine("                                       -------§§§§§---0000§§§------                   ");
+                Console.WriteLine("                                                                                      ");
+                Console.WriteLine("                                                                                      ");
+                Console.WriteLine("                                                                                      ");
+                Console.ForegroundColor = ConsoleColor.White;
+                int nummenu = Convert.ToInt32(Console.ReadLine());
+                MainMenu = nummenu + x;
+                if (MainMenu == 2)
+                {
                     Console.Clear();
                     Console.WriteLine("Что вы хотите выбрать?");
                     Console.WriteLine("1. Шлемы");
@@ -188,32 +188,249 @@ namespace rpg
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine($@"  8. Проклятый Шлем 0000000000            стоимость: {cena8} §              (+{harakteristiki8} защиты)          ");
                         Console.WriteLine($@"  9. Повязка Иллидана -~~-                стоимость: {cena9} §              (+{harakteristiki9} защиты)          ");
-                        Console.WriteLine("     Напиши: Назад, чтобы вернуться ");
-                        int shopmenudlyshlemov = Convert.ToInt32(Console.ReadLine());
-
+                        Console.WriteLine("     Напиши: 10, чтобы вернуться назад ");
+                        int shopmenudlyashlemov = Convert.ToInt32(Console.ReadLine());
+                        if (shopmenudlyashlemov == 1)
+                        {
+                            if (money >= cena1)
+                            {
+                                money -= cena1;
+                                bonusdef += harakteristiki1;
+                            }
+                            else if (money <= cena1)
+                            {
+                                Console.WriteLine("Не хватает золота");
+                            }
+                        }
+                        else if (shopmenudlyashlemov == 2)
+                        {
+                            if (money >= cena2)
+                            {
+                                money -= cena2;
+                                bonusdef += harakteristiki2;
+                            }
+                            else if (money < cena2)
+                            {
+                                Console.WriteLine("Не хватает золота");
+                            }
+                        }
+                        else if (shopmenudlyashlemov == 3)
+                        {
+                            if (money >= cena3)
+                            {
+                                money -= cena3;
+                                bonusdef += harakteristiki3;
+                            }
+                            else if (money < cena3)
+                            {
+                                Console.WriteLine("Не хватает золота");
+                            }
+                        }
+                        else if (shopmenudlyashlemov == 4)
+                        {
+                            if (money >= cena4)
+                            {
+                                money -= cena4;
+                                bonusdef += harakteristiki4;
+                            }
+                            else if (money < cena4)
+                            {
+                                Console.WriteLine("Не хватает золота");
+                            }
+                        }
+                        else if (shopmenudlyashlemov == 5)
+                        {
+                            if (money >= cena5)
+                            {
+                                money -= cena5;
+                                bonusdef += harakteristiki5;
+                            }
+                            else if (money < cena5)
+                            {
+                                Console.WriteLine("Не хватает золота");
+                            }
+                        }
+                        else if (shopmenudlyashlemov == 6)
+                        {
+                            if (money >= cena6)
+                            {
+                                money -= cena6;
+                                bonusdef += harakteristiki6;
+                            }
+                            else if (money < cena6)
+                            {
+                                Console.WriteLine("Не хватает золота");
+                            }
+                        }
+                        else if (shopmenudlyashlemov == 7)
+                        {
+                            if (money >= cena7)
+                            {
+                                money -= cena7;
+                                bonusdef += harakteristiki7;
+                            }
+                            else if (money < cena7)
+                            {
+                                Console.WriteLine("Не хватает золота");
+                            }
+                        }
+                        else if (shopmenudlyashlemov == 8)
+                        {
+                            if (money >= cena8)
+                            {
+                                money -= cena8;
+                                bonusdef += harakteristiki8;
+                            }
+                            else if (money < cena8)
+                            {
+                                Console.WriteLine("Не хватает золота");
+                            }
+                        }
+                        else if (shopmenudlyashlemov == 9)
+                        {
+                            if (money >= cena9)
+                            {
+                                money -= cena9;
+                                bonusdef += harakteristiki9;
+                            }
+                            else if (money < cena9)
+                            {
+                                Console.WriteLine("Не хватает золота");
+                            }
+                        }
+                        else if (shopmenudlyashlemov == 10)
+                        {
+                            MainMenu -= 1;
+                        }
                         Thread.Sleep(500);
+
                     }
-                    else if (ShopMenu == 2) 
+                    else if (ShopMenu == 2)
                     {
-                    Console.Clear();
-                    Console.WriteLine("Раздел Мечей");
-                    Console.WriteLine($@"  1. Деревянный Меч -----|==========>     стоимость: {cena1} §              (+{harakteristiki1} чистого урона)           ");
-                    Console.WriteLine($@"   2. Улучшенный Деревянный Меч -----+==========>     стоимость: {cena2} §  (+{harakteristiki2} чистого урона)           ");
-                    Console.WriteLine($@"    3. Каменный Меч   -----)---------->              стоимость: {cena3} § (+{harakteristiki3} чистого урона)           ");
-                    Console.WriteLine($@"     4. Меч Матфея Великого    ------)=========>     стоимость: {cena4} § (+{harakteristiki4} чистого урона)           ");
-                    Console.WriteLine($@"      5. Железный Меч   ---)=========>               стоимость: {cena5} § (+{harakteristiki5} чистого урона)           ");
-                    Console.ForegroundColor = ConsoleColor.DarkMagenta;
-                    Console.WriteLine($@"        6. Линовый Меч       ---)=========--       стоимость: {cena6} § (+{harakteristiki6} чистого урона)             ");
-                    Console.ForegroundColor = ConsoleColor.DarkRed;
-                    Console.WriteLine($@"          7.Меч Берсерка ========)¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦►              стоимость: {cena7} § (+{harakteristiki7} чистого урона)");
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine($@"           8. Проклятый Меч  =======()=========================>           стоимость: {cena8} § (+{harakteristiki8} чистого урона)    ");
-                    Console.WriteLine($@"             ");
-                    Console.WriteLine($@"             9. Кровавая Коса Великой Элуны    --------------------╕                                                 ");
-                    Console.WriteLine($@"                                                                   │      стоимость: {cena9} § (+{harakteristiki9} чистого урона)    ");
-                    Console.WriteLine($@"                                                                   │                                                 ");
-                    Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine("     Напиши: Назад, чтобы вернуться                                                                                 ");
+                        Console.Clear();
+                        Console.WriteLine("Раздел Мечей");
+                        Console.WriteLine($@"  1. Деревянный Меч -----|==========>     стоимость: {cena1} §              (+{harakteristiki1} чистого урона)           ");
+                        Console.WriteLine($@"   2. Улучшенный Деревянный Меч -----+==========>     стоимость: {cena2} §  (+{harakteristiki2} чистого урона)           ");
+                        Console.WriteLine($@"    3. Каменный Меч   -----)---------->              стоимость: {cena3} § (+{harakteristiki3} чистого урона)           ");
+                        Console.WriteLine($@"     4. Меч Матфея Великого    ------)=========>     стоимость: {cena4} § (+{harakteristiki4} чистого урона)           ");
+                        Console.WriteLine($@"      5. Железный Меч   ---)=========>               стоимость: {cena5} § (+{harakteristiki5} чистого урона)           ");
+                        Console.ForegroundColor = ConsoleColor.DarkMagenta;
+                        Console.WriteLine($@"        6. Линовый Меч       ---)=========--       стоимость: {cena6} § (+{harakteristiki6} чистого урона)             ");
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        Console.WriteLine($@"          7.Меч Берсерка ========)¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦►              стоимость: {cena7} § (+{harakteristiki7} чистого урона)");
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine($@"           8. Проклятый Меч  =======()=========================>           стоимость: {cena8} § (+{harakteristiki8} чистого урона)    ");
+                        Console.WriteLine($@"             ");
+                        Console.WriteLine($@"             9. Кровавая Коса Великой Элуны    --------------------╕                                                 ");
+                        Console.WriteLine($@"                                                                   │      стоимость: {cena9} § (+{harakteristiki9} чистого урона)    ");
+                        Console.WriteLine($@"                                                                   │                                                 ");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine("     Напиши: 10, чтобы вернуться назад                                                                                 ");
+                        int shopmenudlyamechei = Convert.ToInt32(Console.ReadLine());
+                        if (shopmenudlyamechei == 1)
+                        {
+                            if (money >= cena1)
+                            {
+                                money -= cena1;
+                            }
+                            else if (money <= cena1)
+                            {
+                                Console.WriteLine("Не хватает золота");
+                            }
+                        }
+                        else if (shopmenudlyamechei == 2)
+                        {
+                            if (money >= cena2)
+                            {
+                                money -= cena2;
+                            }
+                            else if (money < cena2)
+                            {
+                                Console.WriteLine("Не хватает золота");
+                            }
+                        }
+                        else if (shopmenudlyamechei == 3)
+                        {
+                            if (money >= cena3)
+                            {
+                                money -= cena3;
+                            }
+                            else if (money < cena3)
+                            {
+                                Console.WriteLine("Не хватает золота");
+                            }
+                        }
+                        else if (shopmenudlyamechei == 4)
+                        {
+                            if (money >= cena4)
+                            {
+                                money -= cena4;
+                            }
+                            else if (money < cena4)
+                            {
+                                Console.WriteLine("Не хватает золота");
+                            }
+                        }
+                        else if (shopmenudlyamechei == 5)
+                        {
+                            if (money >= cena5)
+                            {
+                                money -= cena5;
+                            }
+                            else if (money < cena5)
+                            {
+                                Console.WriteLine("Не хватает золота");
+                            }
+                        }
+                        else if (shopmenudlyamechei == 6)
+                        {
+                            if (money >= cena6)
+                            {
+                                money -= cena6;
+                            }
+                            else if (money < cena6)
+                            {
+                                Console.WriteLine("Не хватает золота");
+                            }
+                        }
+                        else if (shopmenudlyamechei == 7)
+                        {
+                            if (money >= cena7)
+                            {
+                                money -= cena7;
+                            }
+                            else if (money < cena7)
+                            {
+                                Console.WriteLine("Не хватает золота");
+                            }
+                        }
+                        else if (shopmenudlyamechei == 8)
+                        {
+                            if (money >= cena8)
+                            {
+                                money -= cena8;
+                            }
+                            else if (money < cena8)
+                            {
+                                Console.WriteLine("Не хватает золота");
+                            }
+                        }
+                        else if (shopmenudlyamechei == 9)
+                        {
+                            if (money >= cena9)
+                            {
+                                money -= cena9;
+                            }
+                            else if (money < cena9)
+                            {
+                                Console.WriteLine("Не хватает золота");
+                            }
+                        }
+                        else if (shopmenudlyamechei == 10)
+                        {
+                            MainMenu -= 1;
+                        }
+                        Thread.Sleep(500);
                     }
                     else if (ShopMenu == 3)
                     {
@@ -224,7 +441,7 @@ namespace rpg
                         Console.WriteLine($@"    3. Кожано-металлические сапоги  _| |_              стоимость: {cena3} § (+{harakteristiki3} защиты)           ");
                         Console.WriteLine($@"     4. Ботинки Матфея Великого    _! !_     стоимость: {cena4} § (+{harakteristiki4} защиты)           ");
                         Console.WriteLine($@"      5. Железные ботинки        _| \_          стоимость: {cena5} § (+{harakteristiki5} защиты)           ");
-                        Console.WriteLine($@"        6. Линовые Ботинки       _/ \_                        стоимость: {cena6} § (+{harakteristiki6} защиты)           ") ;
+                        Console.WriteLine($@"        6. Линовые Ботинки       _/ \_                        стоимость: {cena6} § (+{harakteristiki6} защиты)           ");
                         Console.ForegroundColor = ConsoleColor.DarkMagenta;
                         Console.WriteLine($@"                     _/ \_                                                                ");
                         Console.ForegroundColor = ConsoleColor.DarkRed;
@@ -234,8 +451,114 @@ namespace rpg
                         Console.WriteLine($@"             ");
                         Console.WriteLine($@"             9. Ботинки Богоподобной Защиты              стоимость: {cena9} § (+{harakteristiki9} защиты)                                      ");
                         Console.ForegroundColor = ConsoleColor.White;
-                        Console.WriteLine("     Напиши: Назад, чтобы вернуться                                                                                 ");
-                        
+                        Console.WriteLine("     Напиши: 10, чтобы вернуться назад                                                                                 ");
+                        int shopmenudlyabotinok = Convert.ToInt32(Console.ReadLine());
+                        if (shopmenudlyabotinok == 1)
+                        {
+                            if (money >= cena1)
+                            {
+                                money -= cena1;
+                            }
+                            else if (money <= cena1)
+                            {
+                                Console.WriteLine("Не хватает золота");
+                            }
+                        }
+                        else if (shopmenudlyabotinok == 2)
+                        {
+                            if (money >= cena2)
+                            {
+                                money -= cena2;
+                            }
+                            else if (money < cena2)
+                            {
+                                Console.WriteLine("Не хватает золота");
+                            }
+                        }
+                        else if (shopmenudlyabotinok == 3)
+                        {
+                            if (money >= cena3)
+                            {
+                                money -= cena3;
+                            }
+                            else if (money < cena3)
+                            {
+                                Console.WriteLine("Не хватает золота");
+                            }
+                        }
+                        else if (shopmenudlyabotinok == 4)
+                        {
+                            if (money >= cena4)
+                            {
+                                money -= cena4;
+                            }
+                            else if (money < cena4)
+                            {
+                                Console.WriteLine("Не хватает золота");
+                            }
+                        }
+                        else if (shopmenudlyabotinok == 5)
+                        {
+                            if (money >= cena5)
+                            {
+                                money -= cena5;
+                            }
+                            else if (money < cena5)
+                            {
+                                Console.WriteLine("Не хватает золота");
+                            }
+                        }
+                        else if (shopmenudlyabotinok == 6)
+                        {
+                            if (money >= cena6)
+                            {
+                                money -= cena6;
+                            }
+                            else if (money < cena6)
+                            {
+                                Console.WriteLine("Не хватает золота");
+                            }
+                        }
+                        else if (shopmenudlyabotinok == 7)
+                        {
+                            if (money >= cena7)
+                            {
+                                money -= cena7;
+                            }
+                            else if (money < cena7)
+                            {
+                                Console.WriteLine("Не хватает золота");
+                            }
+                        }
+                        else if (shopmenudlyabotinok == 8)
+                        {
+                            if (money >= cena8)
+                            {
+                                money -= cena8;
+                            }
+                            else if (money < cena8)
+                            {
+                                Console.WriteLine("Не хватает золота");
+                            }
+                        }
+                        else if (shopmenudlyabotinok == 9)
+                        {
+                            if (money >= cena9)
+                            {
+                                money -= cena9;
+                            }
+                            else if (money < cena9)
+                            {
+                                Console.WriteLine("Не хватает золота");
+                            }
+                        }
+                        else if (shopmenudlyabotinok == 10)
+                        {
+                            MainMenu -= 1;
+                        }
+
+                        Thread.Sleep(500);
+
                     }
                 }
                 else if (MainMenu == 3)
@@ -252,16 +575,16 @@ namespace rpg
                     Console.ForegroundColor = ConsoleColor.DarkRed;
                     Console.WriteLine($@"7. {stoneofdemon} стоимость: {cenaartdemona} § (+{stoneofdemondam}  урона");
                     Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine("     Напиши: Назад, чтобы вернуться                                                                                 ");
+                    Console.WriteLine("     Напиши: 10, чтобы вернуться назад                                                                                 ");
 
 
                 }
-               else if (MainMenu == 4)
+                else if (MainMenu == 4)
                 {
                     Console.Clear();
                     Console.WriteLine(ostrovK);
                 }
-              else if (MainMenu == 5)
+                else if (MainMenu == 5)
                 {
                     Console.Clear();
                     Console.WriteLine(ostrovD);
@@ -271,12 +594,16 @@ namespace rpg
                     Console.Clear();
                     Console.WriteLine(ostrovT);
                 }
-               else  if (MainMenu >= 2)
+                if (MainMenu == 7)
+                {
+                    Console.Clear();
+                }
+                else if (MainMenu >= 8)
                 {
                     Console.Clear();
                     Console.WriteLine("Такого меню нет");
                 }
-                Thread.Sleep(100000);
+                Thread.Sleep(500);
             }
         }
     }
