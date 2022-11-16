@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,11 +14,34 @@ namespace rpg
     static void Main(string[] args)
     {
             //все переменные
-            int x = 1;
-            int HealthPlayer = 20;
-            int DamagePlayer = 5;
+            int percent = 100;
+            const int y = 0; 
+            int viborodin = 1;
+            string viborodinasd = viborodin.ToString();
+            int vibordva = 2;
+            string vibordvaasd = vibordva.ToString();
+            int vibortri = 3;
+            string vibortriasd = vibortri.ToString();
+            int viborch = 4;
+            string viborchasd = viborch.ToString();
+            int viborp = 5;
+            string viborpasd = viborp.ToString();
+            int viborsh = 6;
+            string viborshasd = viborsh.ToString();
+            int vibors = 7;
+            string viborsasd = vibors.ToString();
+            int viborv = 8;
+            string viborvasd = viborv.ToString();
+            int vibordev = 9;
+            string vibordevasd = vibordev.ToString();
             int kripscrabshp = 10;
             int kripscrabsdam = 1;
+            int x = 1;
+            int defense = 0;
+            float HealthPlayer = 20;
+            int bonusdam = 0;
+            int DamagePlayer = 5 + bonusdam;
+            int defensedamitogotcrabs = kripscrabsdam - defense;
             int ShopMenu2 = 0;
             int MainMenu = 1;
             int cena0 = 1;
@@ -56,14 +79,21 @@ namespace rpg
             int darovanieofleanhp = 10;
             int darovanieofleandam = 5;
             int darovanieofleandef = 3;
+            string stoneofdemon = "Камень ярости";
+            int stoneofdemondam = 20;
+            int cenaartdemona = 37;
             string ostrovK = "Остров малых крабов";
             string ostrovD = "Остров Друидов";
             string ostrovT = "Остров Траллов";
             int money = 0;
-Console.WriteLine("Привет, как тебя зовут?");
+            Console.WriteLine("Привет, как тебя зовут?");
         string NAME = Console.ReadLine();
             Console.Clear();
             while (true) {
+            float vampiricbuy = 0;
+            float vampiric = DamagePlayer / ((percent - 90) + vampiricbuy);
+            float itogovoehp = vampiric + HealthPlayer;
+            float itogvamp = HealthPlayer - DamagePlayer + itogovoehp;
         string[] smile = { " ", "W", "-", "о", "О" };
         Random randomsmile = new Random(); ;
         int randsmile = randomsmile.Next(smile.Length);
@@ -77,8 +107,8 @@ Console.WriteLine("Привет, как тебя зовут?");
         Console.WriteLine($@"Денег: {money} (§)                /       \                                          ");
         Console.WriteLine($@"                           /         \             здоровье персонажа: {HealthPlayer}");
         Console.WriteLine($@"                          |           |            урон персонажа {DamagePlayer}     ");
-        Console.WriteLine(@"                          |   -    -  |                                               ");
-        Console.WriteLine(@"                          |           |                                               ");
+        Console.WriteLine($@"                          |   -    -  |                  вампиризм: {itogvamp}                             ");
+        Console.WriteLine($@"                          |           |              броня: {defense}                                  ");
         Console.WriteLine($@"                          |     {smile[randsmile]}     |                             ");
         Console.WriteLine(@"                           \         /                                                ");
         Console.WriteLine(@"                            \       /    |                                            ");
@@ -142,7 +172,6 @@ Console.WriteLine("Привет, как тебя зовут?");
                     Console.WriteLine("2. Мечи");
                     Console.WriteLine("3. Сапоги");
                     int ShopMenu = Convert.ToInt32(Console.ReadLine());
-                    ShopMenu1:
                     if (ShopMenu == 1)
                     {
                         Console.Clear();
@@ -160,8 +189,8 @@ Console.WriteLine("Привет, как тебя зовут?");
                         Console.WriteLine($@"  8. Проклятый Шлем 0000000000            стоимость: {cena8} §              (+{harakteristiki8} защиты)          ");
                         Console.WriteLine($@"  9. Повязка Иллидана -~~-                стоимость: {cena9} §              (+{harakteristiki9} защиты)          ");
                         Console.WriteLine("     Напиши: Назад, чтобы вернуться ");
-                        string shopnazad1 = Console.ReadLine();
-                        
+                        int shopmenudlyshlemov = Convert.ToInt32(Console.ReadLine());
+
                         Thread.Sleep(500);
                     }
                     else if (ShopMenu == 2) 
@@ -213,13 +242,18 @@ Console.WriteLine("Привет, как тебя зовут?");
                 {
                     Console.Clear();
                     Console.WriteLine("магазин артефактов");
-                    Console.WriteLine($@"{bloodstone} стоимость: {cena7} § (+вампирик (10%) ");
-                    Console.WriteLine($@"{ahatofhealth} стоимость: {cena5} § (+{ahatofhealthhp} здоровье  ");
-                    Console.WriteLine($@"{bloodamulet} стоимость: {cena6} § (+{bloodamuletdam} к урону  ");
-                    Console.WriteLine($@"{ringofprotection} стоимость: {cena1} § (+{ringofprotectiondef} защиты");
-                    Console.WriteLine($@"{palka} стоимость: {cena0} § (+{palkadam} урона ");
-                    Console.WriteLine($@"{darovanieoflean} стоимость: {cena6} § (+{darovanieofleanhp} здоровья, +{darovanieofleandam} урона, +{darovanieofleandef} защиты");
+                    Console.WriteLine($@"1. {bloodstone} стоимость: {cena7} § (+вампирик (10%) ");
+                    Console.WriteLine($@"2. {ahatofhealth} стоимость: {cena5} § (+{ahatofhealthhp} здоровье  ");
+                    Console.WriteLine($@"3. {bloodamulet} стоимость: {cena6} § (+{bloodamuletdam} к урону  ");
+                    Console.WriteLine($@"4. {ringofprotection} стоимость: {cena1} § (+{ringofprotectiondef} защиты");
+                    Console.WriteLine($@"5. {palka} стоимость: {cena0} § (+{palkadam} урона ");
+                    Console.ForegroundColor = ConsoleColor.DarkMagenta;
+                    Console.WriteLine($@"6. {darovanieoflean} стоимость: {cena6} § (+{darovanieofleanhp} здоровья, +{darovanieofleandam} урона, +{darovanieofleandef} защиты");
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    Console.WriteLine($@"7. {stoneofdemon} стоимость: {cenaartdemona} § (+{stoneofdemondam}  урона");
+                    Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine("     Напиши: Назад, чтобы вернуться                                                                                 ");
+
 
                 }
                else if (MainMenu == 4)
