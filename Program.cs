@@ -208,28 +208,24 @@ namespace rpg
                 Random randcenacrabaodin = new Random();
                 Random randcenacrabadva = new Random();
                 Random randcenacrabatri = new Random();
+                Random randcenadruidmechnik = new Random();
+                Random randcenadruidmonah = new Random();
+                Random randcenadruidkiller = new Random();
+                Random randcenatrallohotnik = new Random();
+                Random randcenatrallshaman = new Random();
+                Random randcenatralltank = new Random();
                 int randcenacrabsobik = randcenacrabaodin.Next(5, 10);
                 int randcenacrabselite = randcenacrabadva.Next(10, 15);
                 int randcenacrabskorol = randcenacrabatri.Next(20, 25);
-                Random randcenadruidmechnik = new Random();
                 int randcenadruidmechnikodin = randcenadruidmechnik.Next(40, 47);
-                Random randcenadruidmonah = new Random();
                 int randcenadruidmonahdva = randcenadruidmonah.Next(55, 80);
-                Random randcenadruidkiller = new Random();
                 int randcenadruidkilertri = randcenadruidkiller.Next(75, 90);
-
-                Random randcenatrallohotnik = new Random();
                 int randcenatrallohotnikodin = randcenatrallohotnik.Next(100, 150);
-
-                Random randcenatrallshaman = new Random();
                 int randcenatrallshamandva = randcenatrallshaman.Next(200, 250);
-
-                Random randcenatralltank = new Random();
-                int randcenatralltankdva = randcenatralltank.Next(1000, 10000);
-
+                int randcenatralltanktri = randcenatralltank.Next(500, 600);
                 int nummenu = Convert.ToInt32(Console.ReadLine());
                 MainMenu = nummenu;
-                 //магаз
+                //магаз
                 if (MainMenu == 1)
                 {
                     Console.Clear();
@@ -237,6 +233,7 @@ namespace rpg
                     Console.WriteLine($@"1. Шлемы /==\");
                     Console.WriteLine($@"2. Мечи --|========>");
                     Console.WriteLine($@"3. Сапоги /\");
+                    Console.WriteLine($@"4. Назад");
                     int ShopMenu = Convert.ToInt32(Console.ReadLine());
                     if (ShopMenu == 1)
                     {
@@ -670,8 +667,12 @@ namespace rpg
                         }
                         Thread.Sleep(500);
                     }
+                    else if (ShopMenu >= 4)
+                    {
+                        nummenu -= 1;
+                    }
                 }
-                 //артефакты
+                //артефакты
                 else if (MainMenu == 2)
                 {
                     Console.Clear();
@@ -782,7 +783,7 @@ namespace rpg
                         }
                     }
                 }
-                 //остров крабов
+                //остров крабов
                 else if (MainMenu == 3)
                 {
 
@@ -1059,15 +1060,15 @@ namespace rpg
                                 kripscrabkorolhp -= (DamagePlayer - kripscrabkoroldef);
                                 HealthPlayer -= (kripscrabkoroldam - DefensePlayer);
                                 Console.Clear();
-                                
+
                                 if (kripscrabkorolhp > 0)
                                 {
-                                if (HealthPlayerDefault < HealthPlayer)
-                                {
+                                    if (HealthPlayerDefault < HealthPlayer)
+                                    {
 
-                                    HealthPlayer = HealthPlayerDefault;
+                                        HealthPlayer = HealthPlayerDefault;
 
-                                }
+                                    }
                                     Console.Clear();
                                 }
                                 else if (kripscrabkorolhp <= 0)
@@ -1110,7 +1111,7 @@ namespace rpg
                         nummenu -= 1;
                     }
                 }
-                  //остров друидов
+                //остров друидов
                 else if (MainMenu == 4)
                 {
                     introfordruids += 1;
@@ -1265,20 +1266,20 @@ namespace rpg
                                     }
                                 }
                             }
-                                if (fightdruidmechnik == 2)
-                                {
-                                    HealthPlayer -= (druidmonahdam - (DefensePlayer * 2));
-                                    Console.Clear();
-                                }
-                                if (fightdruidmechnik == 3)
-                                {
-                                    break;
-                                }
-                                if (fightdruidmechnik >= 4)
-                                {
-                                    Console.WriteLine("Такого действия нет");
-                                }
-                            
+                            if (fightdruidmechnik == 2)
+                            {
+                                HealthPlayer -= (druidmonahdam - (DefensePlayer * 2));
+                                Console.Clear();
+                            }
+                            if (fightdruidmechnik == 3)
+                            {
+                                break;
+                            }
+                            if (fightdruidmechnik >= 4)
+                            {
+                                Console.WriteLine("Такого действия нет");
+                            }
+
                         }
                     }
                     else if (Druidnumber == 2)
@@ -1328,71 +1329,76 @@ namespace rpg
                                     Console.Clear();
                                 }
                             }
-                                    if (druidmonahhp <= 0)
-                                    {
-                                        if (HealthPlayer > 0)
-                                        {
-                                            Console.WriteLine("Победа!!!");
-                                            Thread.Sleep(2000);
-                                            nummenu -= 1;
-                                            money += randcenadruidmonahdva;
-                                            Console.Clear();
-                                        }
-                                        else if (HealthPlayer <= 0)
-                                        {
-                                            Console.WriteLine("Ты умер(");
-                                        }
-                                    }
-                                
-                                else if (fightdruidmonah == 2)
+                            if (druidmonahhp <= 0)
+                            {
+                                if (HealthPlayer > 0)
                                 {
-                                    HealthPlayer -= (druidmonahdam - (DefensePlayer * 2));
+                                    Console.Clear();
+                                    Console.WriteLine("Победа!!!");
+                                    Thread.Sleep(2000);
+                                    nummenu -= 1;
+                                    money += randcenadruidmonahdva;
                                     Console.Clear();
                                 }
-                                else if (fightdruidmonah == 3)
+                                else if (HealthPlayer <= 0)
                                 {
-                                    nummenu -= 1;
-                                    break;
+                                    Console.WriteLine("Ты умер(");
                                 }
-                                else if (fightdruidmonah >= 4 )
-                                    {
-                                        Console.WriteLine("нет такого действия");
-                                    }
-                              
-                            
+                            }
+
+                            else if (fightdruidmonah == 2)
+                            {
+                                HealthPlayer -= (druidmonahdam - (DefensePlayer * 2));
+                                Console.Clear();
+                            }
+                            else if (fightdruidmonah == 3)
+                            {
+                                nummenu -= 1;
+                                break;
+                            }
+                            else if (fightdruidmonah >= 4)
+                            {
+                                Console.WriteLine("нет такого действия");
+                            }
+
+
                         }
                     }
                     else if (Druidnumber == 3)
                     {
-                        while (druidkillerhp > 0) { 
-                        Console.WriteLine($@"    Твое Здоровье: {HealthPlayer}                                                                                  ");
-                        Console.WriteLine($@"                                                                                                                  ");
-                        Console.WriteLine($@"               Здоровье: {druidkillerhp}                                                                                            ");
-                        Console.WriteLine($@"               Урон: {druidkillerdam}                                                                                        ");
-                        Console.WriteLine($@"               Защита: {druidkillerdef}                                                                                            ");
-                        Console.WriteLine($@"                                                                                                                  ");
-                        Console.WriteLine($@"               Друид-Убийца                                                               ");
-                        Console.WriteLine($@"            |==============|                                                       ");
-                        Console.WriteLine($@"            |  000     000 |                                        ");
-                        Console.WriteLine($@"            |  090     090 |                                             ");
-                        Console.WriteLine($@"            |==============|                                  ");
-                        Console.WriteLine($@"            |==============|                                 ");
-                        Console.WriteLine($@"                   0                                      ");
-                        Console.WriteLine($@"                   0                                       ");
-                        Console.WriteLine($@"                   0                                       ");
-                        Console.WriteLine($@"                  /0\                                                   ");
-                        Console.WriteLine($@"                 / 0 \                                        ");
-                        Console.WriteLine($@"                /  0  \                                           ");
-                        Console.WriteLine($@"               /   0   \                                     ");
-                        Console.WriteLine($@"              /    0   =====))¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦►                                    ");
-                        Console.WriteLine($@"                   0                                      ");
-                        Console.WriteLine($@"                  / \                                      ");
-                        Console.WriteLine($@"                 /   \                                    ");
-                        Console.WriteLine($@"                /     \                                      ");
-                        Console.WriteLine($@"               /       \                                    ");
-                        Console.WriteLine($@"              /         \                                    ");
-                        Console.WriteLine($@"             /           \                                   ");
-                        Console.WriteLine($@"        ____/             \____                                             ");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.Clear();
+                        while (druidkillerhp > 0) 
+                        {
+                            Console.WriteLine($@"    Твое Здоровье: {HealthPlayer}                                                                                  ");
+                            Console.WriteLine($@"                                                                                                                  ");
+                            Console.WriteLine($@"                                                                                                           ");
+                            Console.WriteLine($@"                                                                                                       ");
+                            Console.WriteLine($@"                                                                                                          ");
+                            Console.WriteLine($@"                                                                                                                  ");
+                            Console.WriteLine($@"               Друид-Убийца                                                               ");
+                            Console.WriteLine($@"            |==============|                                                       ");
+                            Console.WriteLine($@"            |  000     000 |                                        ");
+                            Console.WriteLine($@"            |  090     090 |                                             ");
+                            Console.WriteLine($@"            |==============|                                  ");
+                            Console.WriteLine($@"            |==============|                Здоровье: {druidkillerhp}                 ");
+                            Console.WriteLine($@"                   0                                      ");
+                            Console.WriteLine($@"                   0                                       ");
+                            Console.WriteLine($@"                   0                                       ");
+                            Console.WriteLine($@"                  /0\                                                   ");
+                            Console.WriteLine($@"                 / 0 \                                        ");
+                            Console.WriteLine($@"                /  0  \                                           ");
+                            Console.WriteLine($@"               /   0   \                             Урон: {druidkillerdam}        ");
+                            Console.WriteLine($@"              /    0   =====))¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦►                                    ");
+                            Console.WriteLine($@"                   0                                      ");
+                            Console.WriteLine($@"                  / \                                      ");
+                            Console.WriteLine($@"                 /   \                                    ");
+                            Console.WriteLine($@"                /     \                                      ");
+                            Console.WriteLine($@"               /       \                  Защита: {druidkillerdef}                   ");
+                            Console.WriteLine($@"              /         \                                    ");
+                            Console.WriteLine($@"             /           \                                   ");
+                            Console.WriteLine($@"        ____/             \____                                             ");
+                            Console.WriteLine($@"   1. Атаковать    2. Защищаться    3. Назад В Меню  ");
                             int fightdruidkiller = Convert.ToInt32(Console.ReadLine());
                             if (fightdruidkiller == 1)
                             {
@@ -1406,7 +1412,7 @@ namespace rpg
                                     }
                                     Console.WriteLine("Ты проиграл...");
                                     Console.Clear();
-                                    if (druidmonahhp <= 0)
+                                    if (druidkillerhp <= 0)
                                     {
                                         if (HealthPlayer > 0)
                                         {
@@ -1424,7 +1430,7 @@ namespace rpg
                                 }
                                 if (fightdruidkiller == 2)
                                 {
-                                    HealthPlayer -= (druidmonahdam - (DefensePlayer * 2));
+                                    HealthPlayer -= (druidkillerdam - (DefensePlayer * 2));
                                     Console.Clear();
                                 }
                                 if (fightdruidkiller == 3)
@@ -1447,10 +1453,10 @@ namespace rpg
                     {
                         nummenu -= 1;
                     }
-                    }
-                 //остров траллов
+                }
+                //остров траллов
                 else if (MainMenu == 5)
-                    {
+                {
                     Console.Clear();
                     introfortralls += 1;
                     if (introfortralls == 1)
@@ -1553,7 +1559,7 @@ namespace rpg
                     Console.WriteLine($@"         /      \                              /   \                            |######|                 ");
                     Console.WriteLine($@"        /        \                            /     \                           |######|                  ");
                     Console.WriteLine($@"       /          \                          /       \                         /        \                 ");
-                    Console.WriteLine($@"      /            \                        /         \                       /          \                ");  
+                    Console.WriteLine($@"      /            \                        /         \                       /          \                ");
                     Console.WriteLine($@"     /              \                      /           \                     /            \              ");
                     Console.WriteLine($@"    /                \                    /             \                   /              \             ");
                     Console.WriteLine($@"                                                                           /                \          ");
@@ -1564,7 +1570,7 @@ namespace rpg
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine($@"                         4. Выйти в меню                                                                                               ");
                     int fighttrall = Convert.ToInt32(Console.ReadLine());
-                    if  (fighttrall == 1)
+                    if (fighttrall == 1)
                     {
                         Console.Clear();
 
@@ -1613,9 +1619,9 @@ namespace rpg
                             int fighttrallohotnik = Convert.ToInt32(Console.ReadLine());
                             if (fighttrallohotnik == 1)
                             {
-                                trallohotnikhp -= (DamagePlayer - trallohotnikdef);
-                                HealthPlayer -= (trallohotnikdam - DefensePlayer);
-                                if (trallohotnikhp > 0)
+                                trallohotnikhp -= DamagePlayer - trallohotnikdef;
+                                HealthPlayer -= trallohotnikdam - DefensePlayer;
+                                if (trallohotnikhp < 0)
                                 {
                                     if (HealthPlayerDefault < HealthPlayer)
                                     {
@@ -1623,7 +1629,7 @@ namespace rpg
                                     }
                                     Console.WriteLine("Ты проиграл...");
                                     Console.Clear();
-                                    if (trallohotnikhp <= 0)
+                                   if (trallohotnikhp <= 0)
                                     {
                                         if (HealthPlayer > 0)
                                         {
@@ -1635,7 +1641,7 @@ namespace rpg
                                         }
                                         else if (HealthPlayer <= 0)
                                         {
-                                            Console.WriteLine("Ты умер(");
+                                            Console.WriteLine("Ты умер...");
                                         }
                                     }
                                 }
@@ -1702,21 +1708,22 @@ namespace rpg
                             Console.WriteLine($@"                                                                   ");
                             Console.WriteLine($@"                                                                    ");
                             Console.WriteLine($@"   1. Атаковать    2. Защищаться    3. Назад В Меню  ");
-                            int fighttrallohotnik = Convert.ToInt32(Console.ReadLine());
-                            if (fighttrallohotnik == 1)
+                            int fighttrallshaman = Convert.ToInt32(Console.ReadLine());
+                            if (fighttrallshaman == 1)
                             {
+                                if (trallshamanhp > 0)
+                                {
                                 trallshamanhp -= (DamagePlayer - trallshamandef);
                                 HealthPlayer -= (trallshamandamphys - DefensePlayer);
                                 HealthPlayer -= (trallshamandammage - (DefensePlayer / 2));
-                                if (trallohotnikhp > 0)
-                                {
+                                
                                     if (HealthPlayerDefault < HealthPlayer)
                                     {
                                         HealthPlayer = HealthPlayerDefault;
                                     }
                                     Console.WriteLine("Ты проиграл...");
                                     Console.Clear();
-                                    if (trallohotnikhp <= 0)
+                                    if (trallshamanhp <= 0)
                                     {
                                         if (HealthPlayer > 0)
                                         {
@@ -1733,16 +1740,16 @@ namespace rpg
                                     }
                                 }
                             }
-                            if (fighttrallohotnik == 2)
+                            if (fighttrallshaman == 2)
                             {
                                 HealthPlayer -= (trallshamandamphys - (DefensePlayer * 2));
                                 Console.Clear();
                             }
-                            if (fighttrallohotnik == 3)
+                            if (fighttrallshaman == 3)
                             {
                                 break;
                             }
-                            if (fighttrallohotnik >= 4)
+                            if (fighttrallshaman >= 4)
                             {
                                 Console.WriteLine("Такого действия нет");
                             }
@@ -1795,12 +1802,11 @@ namespace rpg
                             Console.WriteLine($@"      /____|                        |____\      ");
                             Console.WriteLine($@"   1. Атаковать    2. Защищаться    3. Назад В Меню  ");
                             int fighttralltank = Convert.ToInt32(Console.ReadLine());
-                            if (fighttralltank == 1)
+                            
+                            if (tralltankhp > 0)
                             {
-                                tralltankhp -= (DamagePlayer - tralltankdef);
-                                HealthPlayer -= (tralltankdam - DefensePlayer);
-                                if (tralltankhp > 0)
-                                {
+                                    tralltankhp -= (DamagePlayer - tralltankdef);
+                                    HealthPlayer -= (tralltankdam - DefensePlayer);
                                     if (HealthPlayerDefault < HealthPlayer)
                                     {
                                         HealthPlayer = HealthPlayerDefault;
@@ -1814,40 +1820,31 @@ namespace rpg
                                             Console.WriteLine("Победа!!!");
                                             Thread.Sleep(2000);
                                             nummenu -= 1;
-                                            money += randcenatralltankdva;
+                                            money += randcenatralltanktri;
                                             Console.Clear();
                                         }
                                         else if (HealthPlayer <= 0)
                                         {
-                                            Console.WriteLine("Ты умер(");
+                                            Console.WriteLine("Ты умер...");
                                         }
                                     }
-                                }
                             }
-
                             if (fighttralltank == 2)
                             {
                                 HealthPlayer -= (tralltankdam - (DefensePlayer * 2));
                                 Console.Clear();
                             }
-                            if (fighttralltank == 3)
-                            {
-                                break;
-                            }
-                            if (fighttralltank >= 4)
-                            {
-                                Console.WriteLine("Такого действия нет");
-                            }
+                        
+                    else if (fighttralltank == 4)
+                        {
+                            nummenu -= 1;
                         }
+                        else if (fighttralltank >= 5)
+                        {
+                            Console.WriteLine("Нет такого(");
                         }
-                    if (fighttrall == 4)
-                    {
-                        nummenu -= 1;
                     }
-                    else if (fighttrall >= 5 )
-                    {
-                        Console.WriteLine("Нет такого(");
-                    }
+                }
                 }
                 //обновить главное меню
                 else if (MainMenu == 6)
@@ -1859,12 +1856,14 @@ namespace rpg
                     {
                         money += 9999;
                     }
-
                 else if (MainMenu == 8)
                 {
                     HealthPlayerDefault += 1000000;
                     Damagep += 2000;
                     defense += 400000;
+                    introforcrabs += 1;
+                    introfortralls += 1;
+                    introfordruids += 1;
                 }
                 else if (MainMenu >= 9)
                     {
