@@ -1660,7 +1660,7 @@ namespace rpg
                     {
                         Console.Clear();
 
-                        while (trallohotnikhp > 0)
+                        while (trallshamanhp > 0)
                         {
                             if (HealthPlayerDefault < HealthPlayer)
                             {
@@ -1752,7 +1752,7 @@ namespace rpg
                     if (fighttrall == 3)
                     {
                         Console.Clear();
-                        while (trallohotnikhp > 0)
+                        while (tralltankhp > 0)
                         {
                             if (HealthPlayerDefault < HealthPlayer)
                             {
@@ -1859,8 +1859,14 @@ namespace rpg
                     {
                         money += 9999;
                     }
-                //нет меню
-                else if (MainMenu >= 8)
+
+                else if (MainMenu == 8)
+                {
+                    HealthPlayerDefault += 1000000;
+                    Damagep += 2000;
+                    defense += 400000;
+                }
+                else if (MainMenu >= 9)
                     {
                         Console.Clear();
                         Console.WriteLine("Такого меню нет");
