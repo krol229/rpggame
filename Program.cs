@@ -2,7 +2,6 @@ using System;
 using System.Threading;
 
 namespace rpg
-
 {
     internal class Program
     {
@@ -10,9 +9,7 @@ namespace rpg
         {
             //все переменные
             int percent = 100;
-            const int y = 0;
             int x = 1;
-            int ShopMenu2 = 0;
             int MainMenu = 0;
             int cena0 = 1;
             int cena1 = 5;
@@ -24,6 +21,19 @@ namespace rpg
             int cena7 = 35;
             int cena8 = 50;
             int cena9 = 75;
+            int maghar1 = 1;
+            int maghar2 = 2;
+            int maghar3 = 5;
+            int maghar4 = 10;
+            int maghar5 = 25;
+            int magdam1 = 8;
+            int magdam2 = 15;
+            int magdam3 = 30;
+            int magcena1 = 75;
+            int magcena2 = 100;
+            int magcena3 = 150;
+            int magcena4 = 200;
+            int magcena5 = 400;
             int harakteristiki0 = 0;
             int harakteristiki1 = 3;
             int harakteristiki2 = 4;
@@ -34,13 +44,11 @@ namespace rpg
             int harakteristiki7 = 15;
             int harakteristiki8 = 20;
             int harakteristiki9 = 30;
-            bool buyshlem1 = false;
-            bool buyshlem2 = false;
-            bool buyshlem3 = false;
             int introforcrabs = 0;
             int introfordruids = 0;
             int introfortralls = 0;
-            string bloodstone = "Кровавый камень";
+            string antidef = "Анти броня";
+            int antidefhar = 10;
             string ahatofhealth = "Шляпа здоровья";
             int ahatofhealthhp = 10;
             string bloodamulet = "Амулет крови";
@@ -69,6 +77,7 @@ namespace rpg
             int obschdef = 0;
             int obschdam = 0;
             int obschdefarm = 0;
+            int defmag = 0;
             float HealthPlayerDefault = 20;
             float vampiricbuy = 0;
             int defenseart = 0;
@@ -76,14 +85,372 @@ namespace rpg
             int healthart = 0;
             float Damageforvamp = Damagep;
             float HealthPlayer = 20;
-
+            int xpmax = 36000;
+            int xp = 0;
+            int level = 1;
+            int leveldam2 = 0;
+            int leveldam3 = 0;
+            int leveldam4 = 0;
+            int leveldam5 = 0;
+            int leveldam6 = 0;
+            int leveldam7 = 0;
+            int leveldam8 = 0;
+            int leveldam9 = 0;
+            int leveldam10 = 0;
+            int andef = 0;
+            int mana = 100;
+            int manamax = 100;
+            int defaultmagdam = 0;
+            int chaosmeteordam = 50 + defaultmagdam;
+            int chaosmeteormanacoast = 45;
+            int fireblastdam = 75 + defaultmagdam;
+            int fireblastmanacoast = 60;
+            int chaosmeteorproverka = 0;
+            int fireblastproverka = 0;
+            void proverkahp()
+            {
+                if (HealthPlayer >= HealthPlayerDefault)
+                {
+                    HealthPlayer = HealthPlayerDefault;
+                }
+            }
+            void proverkamp()
+            {
+                if (mana > manamax)
+                {
+                   mana = manamax;
+                }
+            }
+            void proverkaxp()
+            {
+                if (xp > xpmax)
+                {
+                    xp = xpmax;
+                }
+            }
+            //расходники
+            int malayaapt = 0;
+            int srapt = 0;
+            int bolapt = 0;
+            int malayamana = 0;
+            int srmana = 0;
+            int bolmana = 0;
+            int manaiapt = 0;
+            //хп
+            int malayaapthp = 10;
+            int srapthp = 25;
+            int bolapthp = 50;
+            //мана
+            int malayamanamn = 25;
+            int srmanamn = 50;
+            int bolmanamn = 100;
+            //двойная бутыль
+            int manaiapthp = 50;
+            int manaiaptmn = 50;
+            //метод использования предметов
+            void usemalayaapt()
+            {
+                if (malayaapt > 0)
+                {
+                malayaapt -=1;
+                HealthPlayer += malayaapthp;
+                }
+                else
+                {
+                    Console.WriteLine("У вас нет этого предмета");
+                }
+            }
+            void usesrapt()
+            {
+                if (srapt > 0)
+                {
+                srapt -=1;
+                HealthPlayer += srapthp;
+                }
+                else
+                {
+                    Console.WriteLine("У вас нет этого предмета");
+                }
+            }
+            void usebolapt()
+            {
+                if (bolapt > 0)
+                {
+                bolapt -=1;
+                HealthPlayer += bolapthp;
+                }
+                else
+                {
+                    Console.WriteLine("У вас нет этого предмета");
+                }
+            }
+            void usemalayamana()
+            {
+                if (malayamana > 0)
+                {
+                    malayamana -=1;
+                    mana += malayamanamn;
+                }
+                else
+                {
+                    Console.WriteLine("У вас нет этого предмета");
+                }
+            }
+            void usesrmana()
+            {
+                if (srmana > 0)
+                {
+                    srmana -= 1;
+                    mana += srmanamn;
+                }
+                else
+                {
+                    Console.WriteLine("У вас нет этого предмета");
+                }
+            }
+            void usebolmana()
+            {
+                if (bolmana > 0)
+                {
+                    bolmana -= 1;
+                    mana += bolmanamn;
+                }
+                else
+                {
+                    Console.WriteLine("У вас нет этого предмета");
+                }
+            }
+            void usedouble()
+            {
+                if (manaiapt > 0)
+                {
+                    manaiapt -= 1;
+                    mana += manaiaptmn;
+                    HealthPlayer += manaiapthp; 
+                }
+                else
+                {
+                    Console.WriteLine("У вас нет этого предмета");
+                }
+               
+            }
+            string sposobnostcm = "Способность не изучена";
+            string sposobnostfb = "Способность не изучена";
+            void invent()
+            {
+                Console.Clear();
+                    Console.WriteLine($@"     Здоровье: {HealthPlayer}/{HealthPlayerDefault}   Маны: {mana}/{manamax} ");
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine($@"     -----------------------------------       ");
+                    Console.WriteLine($@"  1. Использовать Малую Аптечку: {malayaapt} штук      ");
+                    Console.WriteLine($@"     -----------------------------------       ");
+                    Console.WriteLine($@"  2. Использовать Среднюю Аптечку: {srapt} штук        ");
+                    Console.WriteLine($@"     -----------------------------------       ");
+                    Console.WriteLine($@"  3. Использовать Большую Аптечку: {bolapt} штук        ");
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    Console.WriteLine($@"     -----------------------------------       ");
+                    Console.WriteLine($@"  4. Использовать Малую Бутыль: {malayamana} штук        ");
+                    Console.WriteLine($@"     -----------------------------------       ");
+                    Console.WriteLine($@"  5. Использовать Среднюю Бутыль: {srmana} штук        ");
+                    Console.WriteLine($@"     -----------------------------------       ");
+                    Console.WriteLine($@"  6. Использовать Большую Бутыль: {bolmana} штук        ");
+                    Console.ForegroundColor = ConsoleColor.DarkMagenta;
+                    Console.WriteLine($@"     -----------------------------------       ");
+                    Console.WriteLine($@"  7. Использовать Магическое Зелье: {manaiapt} штук        ");
+                    Console.WriteLine($@"     -----------------------------------       ");
+                    Console.WriteLine($@"                                               ");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine($@" 8. Назад                                      ");
+                    Console.WriteLine($@"                                               ");
+                    int inventorymenu = Convert.ToInt32(Console.ReadLine());
+                    if (inventorymenu == 1)
+                    {
+                        usemalayaapt();
+                    }
+                    else if (inventorymenu == 2)
+                    {
+                        usesrapt();
+                    }
+                    else if (inventorymenu == 3)
+                    {
+                        usebolapt();
+                    }
+                    else if (inventorymenu == 4)
+                    {
+                        usemalayamana();
+                    }
+                    else if (inventorymenu == 5)
+                    {
+                        usesrmana();
+                    }
+                    else if (inventorymenu == 6)
+                    {
+                        usebolmana();
+                    }
+                    else if (inventorymenu == 7)
+                    {
+                        usedouble();
+                    }
+                    proverkahp();
+                    Thread.Sleep(500);
+                    Console.Clear();
+            }
+            //threading
+            void xppersec()
+            {
+                while (xp <= 36000)
+                { 
+                xp += 1;
+                Thread.Sleep(1000);
+                }
+            } 
+            //магия 
+            void usemag()
+            {
+                                Console.Clear();
+                                Console.WriteLine($@"                                   ");
+                                Console.WriteLine($@"                                   ");
+                                Console.WriteLine($@"                                   ");
+                                Console.WriteLine($@"  1. Chaos Meteor: {sposobnostcm}  ");
+                                Console.WriteLine($@"                                   ");
+                                Console.WriteLine($@"                                   ");
+                                Console.WriteLine($@"  2. Fire Blast: {sposobnostfb}    ");
+                                Console.WriteLine($@"                                   ");
+                                Console.WriteLine($@"                                   ");
+                                Console.WriteLine($@"                                   ");
+                                Console.WriteLine($@"  3. Назад                         ");
+            }
+            //thread
+            Thread threadxp = new Thread(xppersec);
+            threadxp.Start();
+            string introostrovK = ostrovK + " - это очень опасное масто для простых людей,\nтак что будьте внимательней!!!";
+            string introdruidD = "Друиды - жрецы у древних кельтских народов, организованные в виде замкнутого, но не наследственного сословия \n\t\tБудьте аккуратны!!!";
+            string introTralls = ostrovT + " - это очень опасное масто для простых людей,\n\tбудьте внимаетельней!!!";
             while (HealthPlayer > 0)
             {
-                if (HealthPlayerDefault < HealthPlayer)
+                string[] netmani = {"Нет маны", "Не хватает маны", "Маны НЕТ!!!", "НЕТТ МАНЫ!"};
+                Random netmanirand = new Random();
+                int netmanirandom = netmanirand.Next(netmani.Length);
+                //проверка способности метеор
+                if (chaosmeteorproverka == 0)
                 {
-
-                    HealthPlayer = HealthPlayerDefault;
-
+                   sposobnostcm = "Способность не изучена";
+                }
+                else if (chaosmeteorproverka == 1)
+                {
+                   sposobnostcm = "Способность изучена";
+                }
+                //проверка файрбласта
+                if (fireblastproverka == 0)
+                {
+                    sposobnostfb = "Способность не изучена";
+                }
+                else if (fireblastproverka == 1)
+                {
+                    sposobnostfb = "Способность изучена";
+                }
+                int levels = level;
+                if ((xp >= 0) && (xp <= 3599))
+                {
+                    level = 1;
+                }
+                else if ((xp >= 3600) && (xp <= 7199))
+                {
+                    level = 2;
+                    leveldam2 += 1;
+                    if (leveldam2 == 1)
+                    {
+                        Damagep += 15;
+                        defense += 7;
+                        HealthPlayerDefault += 10;
+                    }
+                }
+                else if ((xp >= 7200) && (xp <= 10799))
+                {
+                    level = 3;
+                    leveldam3 += 1;
+                    if (leveldam3 == 1)
+                    {
+                        Damagep += 50;
+                        defense += 15;
+                        HealthPlayerDefault += 10;
+                    }
+                }
+                else if ((xp >= 10800) && (xp <= 14399))
+                {
+                    level = 4;
+                    leveldam4 += 1;
+                    if (leveldam4 == 1)
+                    {
+                        Damagep += 150;
+                        defense += 30;
+                        HealthPlayerDefault += 10;
+                    }
+                }
+                else if ((xp >= 14400) && (xp <= 17999))
+                {
+                    level = 5;
+                    leveldam5 += 1;
+                    if (leveldam5 == 1)
+                    {
+                        Damagep += 225;
+                        defense += 65;
+                        HealthPlayerDefault += 10;
+                    }
+                }
+                else if ((xp >= 18000) && (xp <= 21599))
+                {
+                    level = 6;
+                    leveldam6 += 1;
+                    if (leveldam6 == 1)
+                    {
+                        Damagep += 300;
+                        defense += 80;
+                        HealthPlayerDefault += 10;
+                    }
+                }
+                else if ((xp >= 21600) && (xp <= 25199))
+                {
+                    level = 7;
+                    leveldam7 += 1;
+                    if (leveldam7 == 1)
+                    {
+                        Damagep += 400;
+                        defense += 100;
+                        HealthPlayerDefault += 10;
+                    }
+                }
+                else if ((xp >= 25200) && (xp <= 28799))
+                {
+                    level = 8;
+                    leveldam8 += 1;
+                    if (leveldam8 == 1)
+                    {
+                        Damagep += 550;
+                        defense += 150;
+                        HealthPlayerDefault += 10;
+                    }
+                }
+                else if ((xp >= 28800) && (xp <= 32399))
+                {
+                    level = 9;
+                    leveldam9 += 1;
+                    if (leveldam9 == 1)
+                    {
+                        Damagep += 675;
+                        defense += 300;
+                        HealthPlayerDefault += 10;
+                    }
+                }
+                else if ((xp >= 32400) && (xp <= 36000))
+                {
+                    level = 10;
+                    leveldam10 += 1;
+                    if (leveldam10 == 1)
+                    {
+                        Damagep += 800;
+                        defense += 450;
+                    }
                 }
                 int obschdefheaditog = obschdef;
                 int obschdamitog = obschdam;
@@ -95,43 +462,55 @@ namespace rpg
                 int DamagePlayer = Damagep;
                 float vampiric = (0 + DamagePlayer) / percent;
                 float vampiricplushp = (HealthPlayerDefault + vampiric) / percent;
+                proverkahp();
+                proverkamp();
+                proverkaxp();
                 //крабы
                 // обыкновенный
+                int kripscrabobikshpmax = 20;
                 int kripscrabobikshp = 20;
                 int kripscrabsobikdam = 3;
                 int kripscrabsobikdef = 1;
                 // элитный
+                int kripscrabelitehpmax = 100;
                 int kripscrabelitehp = 100;
                 int kripscrabelitedam = 20;
                 int kripscrabelitedef = 35;
                 // король
+                int kripscrabkorolhpmax = 350;
                 int kripscrabkorolhp = 350;
                 int kripscrabkoroldam = 45;
                 int kripscrabkoroldef = 60;
                 //друиды
                 // друид-мечник
+                int druidmechnikhpmax = 500;
                 int druidmechnikhp = 500;
                 int druidmechnikdam = 105;
                 int druidmechnikdef = 100;
                 // друид-монах
+                int druidmonahhpmax = 1500;
                 int druidmonahhp = 1500;
                 int druidmonahdam = 80;
                 int druidmonahdef = 365;
                 // друид-убийца
+                int druidkillerhpmax = 800;
                 int druidkillerhp = 800;
                 int druidkillerdam = 550;
                 int druidkillerdef = 100;
                 // траллы
                 // тралл-охотник
+                int trallohotnikhpmax = 1500;
                 int trallohotnikhp = 1500;
                 int trallohotnikdam = 650;
                 int trallohotnikdef = 200;
                 // тралл-Шаман
+                int trallshamanhpmax = 1550;
                 int trallshamanhp = 1550;
                 int trallshamandamphys = 100;
                 int trallshamandammage = 650;
                 int trallshamandef = 500;
                 // тралл-танк
+                int tralltankhpmax = 30000;
                 int tralltankhp = 30000;
                 int tralltankdam = 500;
                 int tralltankdef = 1500;
@@ -139,34 +518,43 @@ namespace rpg
                 string[] smile = { " ", "W", "-", "о", "О" };
                 Random randomsmile = new Random();
                 int randsmile = randomsmile.Next(smile.Length);
-                //Главное меню
+                                //Главное меню
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.Clear();
                 Console.WriteLine($"                 Привет,{NAME}, это игровое меню, здесь ты можешь                     ");
                 Console.WriteLine($"                   приодеть персонажа, а так же фармить с лагерей крипов               ");
-                Console.WriteLine($"         Куда отправимся?                                                              ");
-                Console.WriteLine($"                                                                                       ");
-                Console.WriteLine($@"                            _______                 <---Общая броня головы:            ");
-                Console.WriteLine($@"                           /       \                                       {obschdefheaditog} ");
-                Console.WriteLine($@"                          /         \             здоровье персонажа: {HealthPlayer}/{HealthPlayerDefault}");
-                Console.WriteLine($@"                          |          |           урон персонажа {DamagePlayer}     ");
-                Console.WriteLine($@"                          |  -    -  |                 вампиризм: {vampiricplushp}                             ");
-                Console.WriteLine($@"                          |          |             броня: {DefensePlayer}                                  ");
-                Console.WriteLine($@"                          |    {smile[randsmile]}     |                             ");
-                Console.WriteLine($@"                           \         /                                                ");
-                Console.WriteLine($@"                            \       /    |                Золото: {money} (§)                             ");
-                Console.WriteLine($@"                             \     /     |                                            ");
-                Console.WriteLine($@"                                |        |                                            ");
-                Console.WriteLine($@"                                |        ┬              <--- Общий урон с меча:                        ");
-                Console.WriteLine($@"                         =======|========|                                  {obschdam}          ");
+                Console.WriteLine($"                                                    Куда отправимся?                   ");
+                Console.WriteLine($"  Твой уровень: {level}   | {xp} / {xpmax}                                                                   ");
+                Console.WriteLine($@"                            _______                 <---Общая броня головы: {obschdefheaditog}              ");
+                Console.WriteLine($@"                           /       \                   Мана персонажа: {mana} / {manamax}                   ");
+                Console.WriteLine($@"                          /         \             Здоровье персонажа: {HealthPlayer}/{HealthPlayerDefault}  ");
+                Console.WriteLine($@"                          |          |           Урон персонажа {DamagePlayer}                              ");
+                Console.WriteLine($@"                          |  -    -  |                 Вампиризм: {vampiricplushp}                          ");
+                Console.WriteLine($@"                          |          |             Броня: {DefensePlayer}                                   ");
+                Console.WriteLine($@"                          |    {smile[randsmile]}     |            Маг броня: {defmag}                      ");
+                Console.WriteLine($@"                           \         /                                                                      ");
+                Console.WriteLine($@"                            \       /    |                Золото: {money} (§)                               ");
+                Console.WriteLine($@"                             \     /     |                                               7. Инвентарь       ");
+                Console.WriteLine($@"                                |        |                                                                  ");
+                Console.WriteLine($@"                                |        ┬              <--- Общий урон с меча:                             ");
+                Console.WriteLine($@"                         =======|========|                                  {obschdam}                      ");
                 Console.WriteLine($@"                                |        |        Хар-ики  с артефактов:                                    ");
-                Console.WriteLine($@"                                |        |                          хп: {artefakthp}                                ");
-                Console.WriteLine($@"                              /   \                                 урон: {artefaktdam}                 ");
-                Console.WriteLine($@"                             /     \                                защита: {artefaktdef}                 ");
-                Console.WriteLine($@"                            /       \                                                 ");
-                Console.WriteLine($@"                           /         \                 <------Общая броня с ног:        ");
-                Console.WriteLine($@"                         ---         ---                                 {obschdefarmitog}             ");
-                Console.WriteLine($@"                                                                                      ");
+                Console.WriteLine($@"                                |        |                          хп: {artefakthp}                        ");
+                Console.WriteLine($@"                              /   \                                 урон: {artefaktdam}                     ");
+                Console.WriteLine($@"                             /     \                                защита: {artefaktdef}                   ");
+                Console.WriteLine($@"                            /       \                                                                       ");
+                Console.WriteLine($@"                           /         \                 <------Общая броня с ног:                            ");
+                Console.WriteLine($@"                         ---         ---                                 {obschdefarmitog}                  ");
+                Console.WriteLine($"                                                                      ");
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.WriteLine($"                       Способность Chaos meteor: {sposobnostcm}                                      ");
+                Console.WriteLine($"                                                                       ");
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.WriteLine($"                       Способность Fireblast: {sposobnostfb}                                      ");
+                Console.WriteLine($"                                                                       ");
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine($@"                                     (6). Расходники +                                        ");
+                Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine(@"      (1). Магазин обычных вещей                           (2). Магазин артефактов    ");
                 Console.WriteLine(@"         |-------------|                                     |-------------|          ");
                 Console.WriteLine(@"         |             |                                     |             |          ");
@@ -176,14 +564,12 @@ namespace rpg
                 Console.WriteLine(@"         |             |                                     |             |          ");
                 Console.WriteLine(@"         ---------------                                     ---------------          ");
                 Console.WriteLine(@"                                                                                      ");
-                Console.WriteLine(@"                                                                                      ");
-                Console.WriteLine(@"                                                                                      ");
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("               ---- ▲ ------- ▲  ▲                                                    ");
                 Console.WriteLine("        --------- ▲ ---------- -----                                                  ");
                 Console.WriteLine("    --------  ------------- ▲ ---                                                     ");
                 Console.WriteLine("      ------------- ▲    -----------                                                  ");
-                Console.WriteLine($@"           (3). {ostrovK}                                                   ");
+                Console.WriteLine($@"           (3). {ostrovK}  -------                                                  ");
                 Console.WriteLine("                ---- ▲ --- ------- ▲ ---------                                        ");
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("                                                                                      ");
@@ -201,7 +587,6 @@ namespace rpg
                 Console.WriteLine("                           -----§§§§§-------§§§§-------0000-=-----§§§§------          ");
                 Console.WriteLine($@"                           -------§§§§------ (5). {ostrovT} -------§§§§------    ");
                 Console.WriteLine("                                       -------§§§§§---0000§§§------                   ");
-                Console.WriteLine("                                                                                      ");
                 Console.WriteLine("                                                                                      ");
                 Console.WriteLine("                                                                                      ");
                 Console.ForegroundColor = ConsoleColor.White;
@@ -233,24 +618,25 @@ namespace rpg
                     Console.WriteLine($@"1. Шлемы /==\");
                     Console.WriteLine($@"2. Мечи --|========>");
                     Console.WriteLine($@"3. Сапоги /\");
-                    Console.WriteLine($@"4. Назад");
+                    Console.WriteLine($@"4. Анти маг. вещи ^%&");
+                    Console.WriteLine($@"5. Назад");
                     int ShopMenu = Convert.ToInt32(Console.ReadLine());
                     if (ShopMenu == 1)
                     {
                         Console.Clear();
                         Console.WriteLine($@"Раздел Шлемов /==\ денег: {money}");
                         Console.WriteLine($@"  1. Деревянный Шлем /--\                  стоимость: {cena1} §              (+{harakteristiki1} защиты)           ");
-                        Console.WriteLine($@"  2. Улучшенный Деревянный Шлем /-11-\     стоимость: {cena2} §              (+{harakteristiki2} защиты)           ");
-                        Console.WriteLine($@"  3. Каменный Шлем \-1-/                  стоимость: {cena3} §              (+{harakteristiki3} защиты)           ");
-                        Console.WriteLine($@"  4. Шлем Матфея Великого /--\            стоимость: {cena4} §              (+{harakteristiki4} защиты)           ");
-                        Console.WriteLine($@"  5. Железный Шлем \-2-\                  стоимость: {cena5} §              (+{harakteristiki5} защиты)           ");
+                        Console.WriteLine($@"   2. Улучшенный Деревянный Шлем /-11-\     стоимость: {cena2} §              (+{harakteristiki2} защиты)           ");
+                        Console.WriteLine($@"    3. Каменный Шлем \-1-/                  стоимость: {cena3} §              (+{harakteristiki3} защиты)           ");
+                        Console.WriteLine($@"     4. Шлем Матфея Великого /--\            стоимость: {cena4} §              (+{harakteristiki4} защиты)           ");
+                        Console.WriteLine($@"      5. Железный Шлем \-2-\                  стоимость: {cena5} §              (+{harakteristiki5} защиты)           ");
                         Console.ForegroundColor = ConsoleColor.DarkMagenta;
-                        Console.WriteLine($@"  6. Линовый Шлем \--/                    стоимость: {cena6} §              (+{harakteristiki6} защиты)          ");
+                        Console.WriteLine($@"       6. Линовый Шлем \--/                    стоимость: {cena6} §              (+{harakteristiki6} защиты)          ");
                         Console.ForegroundColor = ConsoleColor.DarkRed;
-                        Console.WriteLine($@"  7.  Шлем Берсерка /-+-\                 стоимость: {cena7} §              (+{harakteristiki7} защиты)          ");
+                        Console.WriteLine($@"        7.  Шлем Берсерка /-+-\                 стоимость: {cena7} §              (+{harakteristiki7} защиты)          ");
                         Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine($@"  8. Проклятый Шлем 0000000000            стоимость: {cena8} §              (+{harakteristiki8} защиты)          ");
-                        Console.WriteLine($@"  9. Повязка Иллидана -~~-                стоимость: {cena9} §              (+{harakteristiki9} защиты)          ");
+                        Console.WriteLine($@"         8. Проклятый Шлем 0000000000            стоимость: {cena8} §              (+{harakteristiki8} защиты)          ");
+                        Console.WriteLine($@"          9. Повязка Иллидана -~~-                стоимость: {cena9} §              (+{harakteristiki9} защиты)          ");
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.WriteLine("     Напиши: 10, чтобы вернуться назад ");
                         int shopmenudlyashlemov = Convert.ToInt32(Console.ReadLine());
@@ -382,20 +768,20 @@ namespace rpg
                     {
                         Console.Clear();
                         Console.WriteLine($@"Раздел Мечей --|========> денег: {money}");
-                        Console.WriteLine($@"  1. Деревянный Меч -----|==========>     стоимость: {cena1} §              (+{harakteristiki1} чистого урона)           ");
-                        Console.WriteLine($@"   2. Улучшенный Деревянный Меч -----+==========>     стоимость: {cena2} §  (+{harakteristiki2} чистого урона)           ");
-                        Console.WriteLine($@"    3. Каменный Меч   -----)---------->              стоимость: {cena3} § (+{harakteristiki3} чистого урона)           ");
-                        Console.WriteLine($@"     4. Меч Матфея Великого    ------)=========>     стоимость: {cena4} § (+{harakteristiki4} чистого урона)           ");
-                        Console.WriteLine($@"      5. Железный Меч   ---)=========>               стоимость: {cena5} § (+{harakteristiki5} чистого урона)           ");
+                        Console.WriteLine($@"  1. Деревянный Меч -----|==========>     стоимость: {cena1} §              (+{harakteristiki1} физического урона)           ");
+                        Console.WriteLine($@"   2. Улучшенный Деревянный Меч -----+==========>     стоимость: {cena2} §  (+{harakteristiki2} физического урона)           ");
+                        Console.WriteLine($@"    3. Каменный Меч   -----)---------->              стоимость: {cena3} § (+{harakteristiki3} физического урона)           ");
+                        Console.WriteLine($@"     4. Меч Матфея Великого    ------)=========>     стоимость: {cena4} § (+{harakteristiki4} физического урона)           ");
+                        Console.WriteLine($@"      5. Железный Меч   ---)=========>               стоимость: {cena5} § (+{harakteristiki5} физического урона)           ");
                         Console.ForegroundColor = ConsoleColor.DarkMagenta;
-                        Console.WriteLine($@"        6. Линовый Меч       ---)=========--       стоимость: {cena6} § (+{harakteristiki6} чистого урона)             ");
+                        Console.WriteLine($@"        6. Линовый Меч       ---)=========--       стоимость: {cena6} § (+{harakteristiki6} физического урона)             ");
                         Console.ForegroundColor = ConsoleColor.DarkRed;
-                        Console.WriteLine($@"          7.Меч Берсерка ========)¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦►              стоимость: {cena7} § (+{harakteristiki7} чистого урона)");
+                        Console.WriteLine($@"          7.Меч Берсерка ========)¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦►              стоимость: {cena7} § (+{harakteristiki7} физического урона)");
                         Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine($@"           8. Проклятый Меч  =======()=========================>           стоимость: {cena8} § (+{harakteristiki8} чистого урона)    ");
+                        Console.WriteLine($@"           8. Проклятый Меч  =======()=========================>           стоимость: {cena8} § (+{harakteristiki8} физического урона)    ");
                         Console.WriteLine($@"             ");
                         Console.WriteLine($@"             9. Кровавая Коса Великой Элуны    --------------------╕                                                 ");
-                        Console.WriteLine($@"                                                                   │      стоимость: {cena9} § (+{harakteristiki9} чистого урона)    ");
+                        Console.WriteLine($@"                                                                   │      стоимость: {cena9} § (+{harakteristiki9} физического урона)    ");
                         Console.WriteLine($@"                                                                   │                                                 ");
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.WriteLine("     Напиши: 10, чтобы вернуться назад                                                                                 ");
@@ -667,7 +1053,89 @@ namespace rpg
                         }
                         Thread.Sleep(500);
                     }
-                    else if (ShopMenu >= 4)
+                    else if (ShopMenu == 4)
+                    {
+                        Console.Clear();
+                        Console.WriteLine($@"Раздел АМ вещей денег: {money}");
+                        Console.WriteLine($@"                                                                                      ");
+                        Console.WriteLine($@" 1. Манта Волшебника |\  стоимость: {magcena1} §  (+{maghar1} маг. защиты)            ");
+                        Console.WriteLine($@"  2. Улучшенная Манта Волшебника |\\  стоимость: {magcena2} §  (+{maghar2} маг. защиты)");
+                        Console.ForegroundColor = ConsoleColor.Magenta;
+                        Console.WriteLine($@"   3. Ion Shell () стоимость: {magcena3} §  (+{maghar3} маг. защиты)                ");
+                        Console.ForegroundColor = ConsoleColor.DarkMagenta;
+                        Console.WriteLine($@"    4. Сфера Анти Мага (=)стоимость: {magcena4} §  (+{maghar4} маг. защиты)                        ");
+                        Console.WriteLine($@"     5. Плащ Анти Мага |\\\ стоимость: {magcena5} §  (+{maghar5} маг. защиты)              ");
+                        Console.WriteLine($@"                                                                                      ");
+                        Console.WriteLine($@"                                                                                      ");
+                        Console.WriteLine($@"                                                                                      ");
+                        Console.WriteLine($@"                                                                                      ");
+                        Console.WriteLine($@"                                                                                      ");
+                        Console.WriteLine($@"                                                                                      ");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine($@"     Напиши: 10, чтобы вернуться назад                                                ");
+                        int shopmenudlyaam = Convert.ToInt32(Console.ReadLine());
+                        if (shopmenudlyaam == 1)
+                        {
+                            if (money >= magcena1)
+                            {
+                                money -= magcena1;
+                                defmag += maghar1;
+                            }
+                            else if (money < magcena1)
+                            {
+                                Console.WriteLine("Не хватает золота");
+                            }
+                        }
+                        else if (shopmenudlyaam == 2)
+                        {
+                            if (money >= magcena2)
+                            {
+                                money -= magcena2;
+                                defmag += maghar2;
+                            }
+                            else if (money < magcena2)
+                            {
+                                Console.WriteLine("Не хватает золота");
+                            }
+                        }
+                        else if (shopmenudlyaam == 3)
+                        {
+                            if (money >= magcena3)
+                            {
+                                money -= magcena3;
+                                defmag += maghar3;
+                            }
+                            else if (money < magcena3)
+                            {
+                                Console.WriteLine("Не хватает золота");
+                            }
+                        }
+                        else if (shopmenudlyaam == 4)
+                        {
+                            if (money >= magcena4)
+                            {
+                                money -= magcena4;
+                                defmag += maghar4;
+                            }
+                            else if (money < magcena4)
+                            {
+                                Console.WriteLine("Не хватает золота");
+                            }
+                        }
+                        else if (shopmenudlyaam == 5)
+                        {
+                            if (money >= magcena5)
+                            {
+                                money -= magcena5;
+                                defmag += maghar5;
+                            }
+                            else if (money < magcena5)
+                            {
+                                Console.WriteLine("Не хватает золота");
+                            }
+                        }
+                    }
+                    else if (ShopMenu >= 5)
                     {
                         nummenu -= 1;
                     }
@@ -676,16 +1144,18 @@ namespace rpg
                 else if (MainMenu == 2)
                 {
                     Console.Clear();
-                    Console.WriteLine($@"магазин артефактов денег: {money}§");
-                    Console.WriteLine($@"1. {bloodstone} стоимость: {cena7} § (+вампирик (10%) (в разработке) ");
+                    Console.WriteLine($@"магазин артефактов  |   денег: {money}§");
+                    Console.WriteLine($@"1. {antidef} стоимость: {cena7} § (-{antidefhar} брони у противника) ");
                     Console.WriteLine($@"2. {ahatofhealth} стоимость: {cena5} § (+{ahatofhealthhp} здоровье)  ");
-                    Console.WriteLine($@"3. {bloodamulet} стоимость: {cena6} § (+{bloodamuletdam} к урону)  ");
+                    Console.WriteLine($@"3. {bloodamulet} стоимость: {cena6} § (+{bloodamuletdam} к физ урону)  ");
                     Console.WriteLine($@"4. {ringofprotection} стоимость: {cena1} § (+{ringofprotectiondef} защиты)");
                     Console.WriteLine($@"5. {palka} стоимость: {cena0} § (+{palkadam} урона) ");
                     Console.ForegroundColor = ConsoleColor.DarkMagenta;
-                    Console.WriteLine($@"6. {darovanieoflean} стоимость: {cena6} § (+{darovanieofleanhp} здоровья, +{darovanieofleandam} урона, +{darovanieofleandef} защиты)");
+                    Console.WriteLine($@"6. {darovanieoflean} стоимость: {cena6} § (+{darovanieofleanhp} здоровья, +{darovanieofleandam} физ урона, +{darovanieofleandef} защиты)");
                     Console.ForegroundColor = ConsoleColor.DarkRed;
-                    Console.WriteLine($@"7. {stoneofdemon} стоимость: {cenaartdemona} § (+{stoneofdemondam}  урона)");
+                    Console.WriteLine($@"7. {stoneofdemon} стоимость: {cenaartdemona} § (+{stoneofdemondam} физ урона)");
+                    Console.ForegroundColor = ConsoleColor.DarkMagenta;
+                    Console.WriteLine("8. Магазин Магических Артефактов");
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine("     Напиши: 10, чтобы вернуться назад                                                                                 ");
                     int artefaktsshop = Convert.ToInt32(Console.ReadLine());
@@ -693,7 +1163,7 @@ namespace rpg
                     {
                         if (money >= cena7)
                         {
-                            vampiricbuy += 10;
+                            andef += antidefhar;
                         }
                         else if (money < cena7)
                         {
@@ -782,78 +1252,147 @@ namespace rpg
                             Console.WriteLine("Не хватает золота");
                         }
                     }
-                }
+                    else if (artefaktsshop == 8)
+                    {
+                        Console.Clear();
+                        Console.WriteLine($@"  Магазин Маг. Артефактов | денег: {money}                                              ");
+                        Console.ForegroundColor = ConsoleColor.Blue;
+                        Console.WriteLine($@"                                                                                        ");
+                        Console.WriteLine($@"  1. Kaya             Стоимость: {cena4} § (+{magdam1} маг урона)                            ");
+                        Console.WriteLine($@"                                                                                        ");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine($@"  ----------------------------------------                                              ");
+                        Console.ForegroundColor = ConsoleColor.DarkYellow;
+                        Console.WriteLine($@"                                                                                        ");
+                        Console.WriteLine($@"  2. Timeless Relic   Стоимость: {cena7} § (+{magdam2} маг урона)                                ");
+                        Console.WriteLine($@"                                                                                        ");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine($@"  ----------------------------------------                                              ");
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        Console.WriteLine($@"                                                                                        ");
+                        Console.WriteLine($@"  3. Psycho Cloack    Стоимость: {magcena3} § (+{magdam3} маг урона)                             ");
+                        Console.WriteLine($@"                                                                                        ");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine($@"  ----------------------------------------                                              ");
+                        Console.ForegroundColor = ConsoleColor.DarkGray;
+                        Console.WriteLine($@"                                                                                        ");
+                        Console.WriteLine($@"  4. Книга Изучения   Стоимость: {magcena4} § (Изучает способность: Chaos Meteor маг. урон: {chaosmeteordam} | Мана: {chaosmeteormanacoast})");
+                        Console.WriteLine($@"                                                                                        ");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine($@"  ----------------------------------------                                              ");
+                        Console.ForegroundColor = ConsoleColor.DarkGray;
+                        Console.WriteLine($@"                                                                                        ");
+                        Console.WriteLine($@"  5. Книга Изучения   Стоимость: {magcena5} § (Изучает способность: Fireblast маг. урон: {fireblastdam} | Мана: {fireblastmanacoast})");
+                        Console.WriteLine($@"                                                                                        ");
+                        Console.WriteLine($@"  ----------------------------------------                                              ");
+                        Console.ForegroundColor = ConsoleColor.DarkGray;
+                        Console.WriteLine($@"                                                                                        ");
+                        Console.WriteLine($@"  5. Книга знаний Стоимость: {magcena2} §(+50 максимальной маны )");
+                        Console.WriteLine($@"                                                                                        ");
+                        Console.WriteLine($@"  ----------------------------------------                                              ");
+                        Console.ForegroundColor = ConsoleColor.White;Console.WriteLine($@"                                                                                        ");
+                        Console.WriteLine($@"                                                                                        ");
+                        Console.WriteLine($@" 7. Назад                                                                                       ");
+                        int magshop = Convert.ToInt32(Console.ReadLine());
+                        if (magshop == 1)
+                        {
+                            if (money >= cena4)
+                            {
+                            money -= cena4;
+                            defaultmagdam += magdam1;
+                            }    
+                            else if (money < cena4)
+                            {
+                                Console.WriteLine("Нет Денег");
+                            }
+                        }
+                        else if (magshop == 2)
+                        {
+                            if (money >= cena7)
+                            {
+                            money -= cena7;
+                            defaultmagdam += magdam2;
+                            }
+                            else if (money < cena7)
+                            {
+                                Console.WriteLine("Нет Денег");
+                            }
+                        }
+                        else if (magshop == 3)
+                        {
+                            if (money >= magcena3)
+                            { 
+                            money -= magcena3;
+                            defaultmagdam += magdam3;
+                                }
+                            else if (money < magcena3)
+                            {
+                                Console.WriteLine("Нет Денег");
+                            }
+                        }
+                        else if (magshop == 4)
+                        {
+                            if (money >= magcena4)
+                            { 
+                                if (chaosmeteorproverka == 0)
+                                {
+                                money -= magcena4;
+                                chaosmeteorproverka += 1;
+                                }
+                                else if (chaosmeteorproverka == 1)
+                                {
+                                Console.WriteLine("у тебя оно уже есть");
+                                }
+                            }
+                            else if (money < magcena4)
+                            {
+                                Console.WriteLine("Нет Денег");
+                            }
+                        }
+                        else if (magshop == 5)
+                        {
+                            if (money >= magcena5) 
+                            { 
+                                if (fireblastproverka == 0)
+                                  {
+                                fireblastproverka += 1;
+                                money -= magcena5;
+                                  }
+                                 else if (fireblastproverka == 1)
+                                  {
+                                Console.WriteLine("у тебя оно уже есть");
+                                  }
+                            }
+                            else if (money < magcena5)
+                            {
+                                Console.WriteLine("Нет Денег");
+                            }
+                        }
+                        else if (magshop == 6)
+                        {
+                            if (money >= magcena2)
+                            {
+                                money -= magcena2;
+                                manamax += 50;
+                            }
+                            else if (money < magcena2)
+                            {
+                                Console.WriteLine("Нет Денег");
+                            }
+                        }
+                    }
+                }   
                 //остров крабов
                 else if (MainMenu == 3)
                 {
-
                     Console.Clear();
                     introforcrabs += 1;
                     if (introforcrabs == 1) {
-                        Console.Write(ostrovK, " - это очень опасное масто для простых людей,");
-                        Console.Write(" - ");
-                        Thread.Sleep(100);
-                        Console.Write("это ");
-                        Thread.Sleep(100);
-                        Console.Write("очень ");
-                        Thread.Sleep(100);
-                        Console.Write("о");
-                        Thread.Sleep(100);
-                        Console.Write("п");
-                        Thread.Sleep(100);
-                        Console.Write("а");
-                        Thread.Sleep(100);
-                        Console.Write("с");
-                        Thread.Sleep(100);
-                        Console.Write("н");
-                        Thread.Sleep(100);
-                        Console.Write("о");
-                        Thread.Sleep(100);
-                        Console.Write("е ");
-                        Thread.Sleep(100);
-                        Console.Write("м");
-                        Thread.Sleep(100);
-                        Console.Write("е");
-                        Thread.Sleep(100);
-                        Console.Write("с");
-                        Thread.Sleep(100);
-                        Console.Write("т");
-                        Thread.Sleep(100);
-                        Console.WriteLine("о");
-                        Thread.Sleep(100);
-                        Console.Write("т");
-                        Thread.Sleep(100);
-                        Console.Write("а");
-                        Thread.Sleep(100);
-                        Console.Write("к ");
-                        Thread.Sleep(100);
-                        Console.Write("ч");
-                        Thread.Sleep(100);
-                        Console.Write("т");
-                        Thread.Sleep(100);
-                        Console.Write("о ");
-                        Thread.Sleep(100);
-                        Console.Write("б");
-                        Thread.Sleep(100);
-                        Console.Write("у");
-                        Thread.Sleep(100);
-                        Console.Write("д");
-                        Thread.Sleep(100);
-                        Console.Write("ь");
-                        Thread.Sleep(100);
-                        Console.Write("т");
-                        Thread.Sleep(100);
-                        Console.Write("е ");
-                        Thread.Sleep(100);
-                        Console.Write("вн");
-                        Thread.Sleep(100);
-                        Console.Write("им");
-                        Thread.Sleep(100);
-                        Console.Write("ат");
-                        Thread.Sleep(100);
-                        Console.Write("ель");
-                        Thread.Sleep(100);
-                        Console.Write("ней!");
+                        foreach(char introshechka1 in introostrovK)
+                            {
+                             Console.Write(introshechka1);
+                            Thread.Sleep(30);
+                            }
                         Thread.Sleep(2000);
                         Console.Clear();
                     }
@@ -899,19 +1438,20 @@ namespace rpg
                         Console.Clear();
                         while (kripscrabobikshp > 0)
                         {
-                            Console.WriteLine($@" Здоровье: {HealthPlayer}/{HealthPlayerDefault}      ");
+                            Console.WriteLine($@" Здоровье: {HealthPlayer}/{HealthPlayerDefault}    Мана: {mana}/{manamax}      ");
                             Console.WriteLine($@"        /---------------\          краб обыкновенный                                            ");
                             Console.WriteLine($@"       /   1       1     \         Здоровье:  {kripscrabobikshp}                                             ");
                             Console.WriteLine($@"      /-------------------\        Защита: {kripscrabsobikdef}                                                                  ");
                             Console.WriteLine($@"     /    \           /    \       Урон:  {kripscrabsobikdam}                                              ");
                             Console.WriteLine($@"    /                       \                                                    ");
                             Console.ForegroundColor = ConsoleColor.White;
-                            Console.WriteLine($@"   1. Атаковать                                2. Защищаться    3. Назад В Меню  ");
+                            Console.WriteLine($@"   1. Атаковать  2. Атаковать с помощью магии   3. Инвентарь 4. Назад В Меню  ");
                             int fightcrabsodin = Convert.ToInt32(Console.ReadLine());
                             if (fightcrabsodin == 1)
                             {
+                                proverkahp();
                                 Console.Clear();
-                                kripscrabobikshp -= (DamagePlayer - kripscrabsobikdef);
+                                kripscrabobikshp -= (DamagePlayer - (kripscrabsobikdef - andef));
                                 HealthPlayer -= (kripscrabsobikdam - DefensePlayer);
                                 if (kripscrabobikshp > 0)
                                 {
@@ -930,6 +1470,7 @@ namespace rpg
                                         Thread.Sleep(2000);
                                         nummenu -= 1;
                                         money += randcenacrabsobik;
+                                        xp += 10;
                                         Console.Clear();
                                     }
                                     else if (HealthPlayer <= 0)
@@ -940,56 +1481,163 @@ namespace rpg
                             }
                             else if (fightcrabsodin == 2)
                             {
-                                HealthPlayer -= (kripscrabsobikdam - (DefensePlayer * 2));
+                                proverkahp();
+                                usemag();
+                                int viborsposobnobikscrab = Convert.ToInt32(Console.ReadLine());
+                                if (viborsposobnobikscrab == 1)
+                                {
+                                        if (chaosmeteorproverka == 1)
+                                        {
+                                        if (mana > chaosmeteormanacoast)
+                                        {
+                                            Console.Clear();
+                                            kripscrabobikshp -= chaosmeteordam;
+                                            mana -= chaosmeteormanacoast;
+                                            if (kripscrabobikshp > 0)
+                                              {
+                                                Console.Clear();
+                                              }
+                                            else if (kripscrabobikshp <= 0)
+                                                   {
+                                             if (HealthPlayer > 0) {
+                                                          Console.WriteLine("Победа!!!");
+                                                          Thread.Sleep(2000);
+                                                          money += randcenacrabsobik;
+                                                          nummenu -= 1;
+                                                          Console.Clear();
+                                                          xp += 10;
+                                                         }
+                                                  else if (HealthPlayer <= 0)
+                                                  {
+                                                Console.WriteLine("Ты умер(");
+                                              }
+                                              }
+                                        }
+                                        else if (mana < chaosmeteormanacoast)
+                                        {
+                                            Console.Clear();
+                                            Console.WriteLine($@"{netmani[netmanirandom]}");
+                                        }
+                                    }
+                                    else if (chaosmeteorproverka == 0)
+                                    {
+                                        Console.Clear();
+                                        Console.WriteLine(sposobnostcm);
+                                        Thread.Sleep(1000);
+                                        Console.Clear();
+                                    }
+                                }
+                                else if (viborsposobnobikscrab == 2)
+                                {
+                                    if (fireblastproverka == 1)
+                                    {
+                                        if (mana > fireblastmanacoast)
+                                        {
+                                            Console.Clear();
+                                            kripscrabobikshp -= fireblastdam;
+                                            mana -= fireblastmanacoast;
+                                            if (kripscrabobikshp > 0)
+                                            {
+                                                Console.Clear();
+                                            }
+                                            else if (kripscrabobikshp <= 0)
+                                            {
+                                                   if (HealthPlayer > 0) 
+                                                   {
+                                                          Console.WriteLine("Победа!!!");
+                                                          Thread.Sleep(2000);
+                                                          money += randcenacrabsobik;
+                                                          nummenu -= 1;
+                                                          Console.Clear();
+                                                          xp += 10;
+                                                   }
+                                                  else if (HealthPlayer <= 0)
+                                                  {
+                                                         Console.WriteLine("Ты умер(");
+                                                  }
+                                            }
+                                        }
+                                        else if (mana < fireblastmanacoast)
+                                        {
+                                            Console.Clear();
+                                            Console.WriteLine($@"{netmani[netmanirandom]}");
+                                        }
+                                }
+                                else if (viborsposobnobikscrab == 3)
+                                {
+
+                                }
                                 Console.Clear();
                             }
-                            else if (fightcrabsodin == 3)
+                             else if (fightcrabsodin == 3)
+                            {
+                                proverkahp();
+                                Console.Clear();
+                            }
+                            else if (fightcrabsodin == 4)
+                            {
+                                Console.Clear();
+                                invent();
+                            }
+                            else if (fightcrabsodin == 5)
                             {
                                 break;
                             }
-                            else if (fightcrabsodin >= 4)
+                            else if (fightcrabsodin >= 6)
                             {
                                 Console.WriteLine("Нет такого действия(");
                                 Thread.Sleep(2000);
                                 Console.Clear();
                             }
                         }
+                            else if (fightcrabsodin == 3)
+                            {
+                                invent();
+                            }
+                            else if (fightcrabsodin == 4)
+                            {
+                                 break;
+                            }
+                            else if (fightcrabsodin >= 5)
+                            {
+                               Console.WriteLine("Нет такого действия(");
+                                Thread.Sleep(2000);
+                                Console.Clear();
+                            }
+                            }
                     }
                     else if (fightcrabs == 2)
                     {
+                        proverkahp();
                         Console.Clear();
                         while (kripscrabelitehp > 0)
                         {
-                            if (HealthPlayerDefault < HealthPlayer)
-                            {
-
-                                HealthPlayer = HealthPlayerDefault;
-
-                            }
-                            if (HealthPlayer == 0)
+                            if (kripscrabelitehp > kripscrabelitehpmax)
+                                {
+                                    kripscrabelitehp = kripscrabelitehpmax;
+                                }
+                            if (HealthPlayer <= 0)
                             {
                                 Environment.Exit(0);
                             }
-                            Console.WriteLine($@" Здоровье: {HealthPlayer}      ");
+                            Console.WriteLine($@" Здоровье: {HealthPlayer}/{HealthPlayerDefault}    Мана: {mana}/{manamax}      ");
                             Console.WriteLine($@"                                                                                ");
-                            Console.WriteLine($@"       /================================\          /   Элитный Краб             ");
-                            Console.WriteLine($@"      /                                  \        /    Здоровье: {kripscrabelitehp}               ");
-                            Console.WriteLine($@" |---/       00#0               0#00      \------/     Защита: {kripscrabelitedef}                 ");
+                            Console.WriteLine($@"       /================================\          /           Элитный Краб     ");
+                            Console.WriteLine($@"      /                                  \        /    Здоровье: {kripscrabelitehp}/{kripscrabelitehpmax}               ");
+                            Console.WriteLine($@" |---/       0##0               0##0      \------/     Защита: {kripscrabelitedef}                 ");
                             Console.WriteLine($@" |  /                                      \           Урон: {kripscrabelitedam}                   ");
                             Console.WriteLine($@"   /----------------------------------------\          Золото: от 10 до 15                          ");
                             Console.WriteLine($@"  /                                          \                                  ");
                             Console.WriteLine($@"                                                                                ");
                             Console.ForegroundColor = ConsoleColor.White;
-                            Console.WriteLine($@"   1. Атаковать                                2. Защищаться    3. Назад В Меню  ");
+                            Console.WriteLine($@"   1. Атаковать  2. Атаковать с помощью магии   3. Инвентарь   4. Назад В Меню  ");
                             int fightcrabsdva = Convert.ToInt32(Console.ReadLine());
                             if (fightcrabsdva == 1)
                             {
+                                
+                                proverkahp();
                                 Console.Clear();
-                                if (HealthPlayerDefault < HealthPlayer)
-                                {
-                                    HealthPlayer = HealthPlayerDefault;
-                                }
-                                kripscrabelitehp -= (DamagePlayer - kripscrabelitedef);
+                                kripscrabelitehp -= (DamagePlayer - (kripscrabelitedef - andef));
                                 HealthPlayer -= (kripscrabelitedam - DefensePlayer);
                                 if (kripscrabelitehp > 0)
                                 {
@@ -1003,6 +1651,7 @@ namespace rpg
                                         money += randcenacrabselite;
                                         nummenu -= 1;
                                         Console.Clear();
+                                        xp += 50;
                                     }
                                     else if (HealthPlayer <= 0)
                                     {
@@ -1012,18 +1661,112 @@ namespace rpg
                             }
                             else if (fightcrabsdva == 2)
                             {
-                                HealthPlayer -= (-(DefensePlayer * 2));
-                                Console.Clear();
+                                if (kripscrabelitehp > 0)
+                                {
+                                    Console.Clear();
+                                }
+                                proverkahp();
+                                usemag();
+                                int viborsposobnelitecrab = Convert.ToInt32(Console.ReadLine());
+                                if (viborsposobnelitecrab == 1)
+                                {
+                                    if (chaosmeteorproverka == 1)
+                                    {
+                                        if (mana > chaosmeteormanacoast)
+                                        {
+                                            Console.Clear();
+                                            kripscrabelitehp -= chaosmeteordam;
+                                            mana -= chaosmeteormanacoast;
+                                            if (kripscrabelitehp > 0)
+                                              {
+                                                Console.Clear();
+                                              }
+                                            else if (kripscrabelitehp <= 0)
+                                                   {
+                                                   if (HealthPlayer > 0) {
+                                                          Console.WriteLine("Победа!!!");
+                                                          Thread.Sleep(2000);
+                                                          money += randcenacrabselite;
+                                                          nummenu -= 1;
+                                                          Console.Clear();
+                                                          xp += 50;
+                                                         }
+                                                  else if (HealthPlayer <= 0)
+                                                  {
+                                                Console.WriteLine("Ты умер(");
+                                              }
+                                              }
+                                        }
+                                        else if (mana < chaosmeteormanacoast)
+                                        {
+                                            Console.Clear();
+                                            Console.WriteLine($@"{netmani[netmanirandom]}");
+                                        }
+                                    }
+                                    else if (chaosmeteorproverka == 0)
+                                    {
+                                        Console.Clear();
+                                        Console.WriteLine(sposobnostcm);
+                                        Thread.Sleep(1000);
+                                        Console.Clear();
+                                    }
+                                }
+                                else if (viborsposobnelitecrab == 2)
+                                {
+                                    if (fireblastproverka == 1)
+                                    {
+                                        if (mana > fireblastmanacoast)
+                                        {
+                                            Console.Clear();
+                                            kripscrabelitehp -= fireblastdam;
+                                            mana -= fireblastmanacoast;
+                                            if (kripscrabelitehp > 0)
+                                            {
+                                                Console.Clear();
+                                            }
+                                            else if (kripscrabelitehp <= 0)
+                                            {
+                                                   if (HealthPlayer > 0) 
+                                                   {
+                                                          Console.WriteLine("Победа!!!");
+                                                          Thread.Sleep(2000);
+                                                          money += randcenacrabselite;
+                                                          nummenu -= 1;
+                                                          Console.Clear();
+                                                          xp += 50;
+                                                   }
+                                                  else if (HealthPlayer <= 0)
+                                                  {
+                                                         Console.WriteLine("Ты умер(");
+                                                  }
+                                            }
+                                        }
+                                        else if (mana < fireblastmanacoast)
+                                        {
+                                            Console.Clear();
+                                            Console.WriteLine($@"{netmani[netmanirandom]}");
+                                        }
+                                    }
+                                    else if (fireblastproverka == 0)
+                                    {
+                                        Console.Clear();
+                                        Console.WriteLine(sposobnostfb);
+                                        Thread.Sleep(400);
+                                        Console.Clear();
+                                    }
+                                }
+                                else if (viborsposobnelitecrab == 3)
+                                { 
+                                    }
                             }
                             else if (fightcrabsdva == 3)
                             {
-                                break;
-                            }
-                            else if (fightcrabsdva >= 4)
-                            {
-                                Console.WriteLine("Нет такого действия(");
-                                Thread.Sleep(2000);
                                 Console.Clear();
+                                invent();
+                            }
+                            else if (fightcrabsdva == 4)
+                            {
+                                break;
                             }
                         }
                     }
@@ -1032,22 +1775,22 @@ namespace rpg
                         Console.Clear();
                         while (kripscrabobikshp > 0)
                         {
-                            Console.WriteLine($@" Здоровье: {HealthPlayer}      ");
+                            Console.WriteLine($@" Здоровье: {HealthPlayer}/{HealthPlayerDefault}    Мана: {mana}/{manamax}      ");
                             Console.WriteLine($@"               |-_-_-_-_-_-_-_-_-_-|               Король Крабов                                                    ");
-                            Console.WriteLine($@"               | /               \ |               Здоровье: {kripscrabkorolhp}                             ");
+                            Console.WriteLine($@"               | /               \ |               Здоровье: {kripscrabkorolhp} / {kripscrabkorolhpmax}                            ");
                             Console.WriteLine($@"               |/                 \|               Защита:  {kripscrabkoroldef}                            ");
                             Console.WriteLine($@"               |___________________|               Урон: {kripscrabkoroldam}                             ");
                             Console.WriteLine($@"           _-------------------------------_                                                                  ");
-                            Console.WriteLine($@"          /       0               0          \                |                   ");
-                            Console.WriteLine($@"         /       090             090          \               |                    ");
-                            Console.WriteLine($@"        /         0               0            \--------------+----------       ");
-                            Console.WriteLine($@"       /========================================\             |                    ");
-                            Console.WriteLine($@"      /                                          \            |                   ");
-                            Console.WriteLine($@"     /                                            \                              ");
-                            Console.WriteLine($@"    /                                              \                              ");
+                            Console.WriteLine($@"          /       0               0         \                |                   ");
+                            Console.WriteLine($@"         /       090             090         \               |                    ");
+                            Console.WriteLine($@"        /         0               0           \--------------+----------       ");
+                            Console.WriteLine($@"       /=======================================\             |                    ");
+                            Console.WriteLine($@"      /                                         \            |                   ");
+                            Console.WriteLine($@"     /                                           \                              ");
+                            Console.WriteLine($@"    /                                             \                              ");
                             Console.WriteLine($@"                                                     Золото: от 20 до 25         ");
                             Console.ForegroundColor = ConsoleColor.White;
-                            Console.WriteLine($@"   1. Атаковать                                2. Защищаться    3. Назад В Меню  ");
+                            Console.WriteLine($@"   1. Атаковать  2. Атаковать с помощью магии  3. Инвентарь   4. Назад В Меню  ");
                             int fightcrabstri = Convert.ToInt32(Console.ReadLine());
                             if (HealthPlayer <= 0)
                             {
@@ -1057,18 +1800,12 @@ namespace rpg
                             }
                             else if (fightcrabstri == 1)
                             {
-                                kripscrabkorolhp -= (DamagePlayer - kripscrabkoroldef);
+                                kripscrabkorolhp -= (DamagePlayer - (kripscrabkoroldef - andef));
                                 HealthPlayer -= (kripscrabkoroldam - DefensePlayer);
                                 Console.Clear();
-
                                 if (kripscrabkorolhp > 0)
                                 {
-                                    if (HealthPlayerDefault < HealthPlayer)
-                                    {
-
-                                        HealthPlayer = HealthPlayerDefault;
-
-                                    }
+                                    proverkahp();
                                     Console.Clear();
                                 }
                                 else if (kripscrabkorolhp <= 0)
@@ -1080,6 +1817,7 @@ namespace rpg
                                         money += randcenacrabskorol;
                                         nummenu -= 1;
                                         Console.Clear();
+                                        xp += 100;
                                         break;
                                     }
                                     else if (HealthPlayer <= 0)
@@ -1090,20 +1828,111 @@ namespace rpg
                             }
                             else if (fightcrabstri == 2)
                             {
-                                HealthPlayer -= (kripscrabsobikdam - (DefensePlayer * 2));
-                                Console.Clear();
+                                 if (kripscrabkorolhp > 0)
+                                 {
+                                    Console.Clear();
+                                 }
+                                proverkahp();
+                                usemag();
+                                int viborsposobnkorolcrab = Convert.ToInt32(Console.ReadLine());
+                                if (viborsposobnkorolcrab == 1)
+                                {
+                                    if (chaosmeteorproverka == 1)
+                                    {
+                                      if (mana > chaosmeteormanacoast)
+                                      {
+                                            Console.Clear();
+                                            kripscrabkorolhp -= chaosmeteordam;
+                                            mana -= chaosmeteormanacoast;
+                                        if (kripscrabkorolhp > 0)
+                                        {
+                                                Console.Clear();
+                                        }
+                                        else if (kripscrabkorolhp <= 0)
+                                        {
+                                            if (HealthPlayer > 0) 
+                                            {
+                                              Console.WriteLine("Победа!!!");
+                                              Thread.Sleep(2000);
+                                              money += randcenacrabskorol;
+                                              nummenu -= 1;
+                                              Console.Clear();
+                                              xp += 100;
+                                                    break;
+                                            }
+                                            else if (HealthPlayer <= 0)
+                                            {
+                                                Console.WriteLine("Ты умер(");
+                                            }
+                                          }
+                                      }
+                                      else if (mana < chaosmeteormanacoast)
+                                      {
+                                            Console.Clear();
+                                            Console.WriteLine($@"{netmani[netmanirandom]}");
+                                      }
+                                    }
+                                    else if (chaosmeteorproverka == 0)
+                                    {
+                                        Console.Clear();
+                                        Console.WriteLine(sposobnostcm);
+                                        Thread.Sleep(1000);
+                                        Console.Clear();
+                                    }
+                                }
+                                else if (viborsposobnkorolcrab == 2)
+                                {
+                                    if (fireblastproverka == 1)
+                                    {
+                                        if (mana > fireblastmanacoast)
+                                        {
+                                            Console.Clear();
+                                            kripscrabkorolhp -= fireblastdam;
+                                            mana -= fireblastmanacoast;
+                                            if (kripscrabkorolhp > 0)
+                                            {
+                                                Console.Clear();
+                                            }
+                                            else if (kripscrabkorolhp <= 0)
+                                            {
+                                                   if (HealthPlayer > 0) 
+                                                   {
+                                                      Console.WriteLine("Победа!!!");
+                                                      Thread.Sleep(2000);
+                                                      money += randcenacrabskorol;
+                                                      nummenu -= 1;
+                                                      Console.Clear();
+                                                      xp += 100;
+                                                      break;
+                                                   }
+                                                  else if (HealthPlayer <= 0)
+                                                  {
+                                                         Console.WriteLine("Ты умер(");
+                                                  }
+                                            }
+                                        }
+                                        else if (mana < fireblastmanacoast)
+                                        {
+                                            Console.Clear();
+                                            Console.WriteLine($@"{netmani[netmanirandom]}");
+                                        }
+                                    }
+                                }
                             }
                             else if (fightcrabstri == 3)
                             {
-                                break;
+                                invent();
                             }
-                            else if (fightcrabstri >= 4)
+                            else if (fightcrabstri == 4)
                             {
-                                Console.WriteLine("Нет такого действия(");
+                                 break;
+                            }
+                            else if (fightcrabstri >= 5)
+                            {
+                               Console.WriteLine("Нет такого действия(");
                                 Thread.Sleep(2000);
                                 Console.Clear();
                             }
-
                         }
                     }
                     else if (fightcrabs >= 4)
@@ -1118,50 +1947,12 @@ namespace rpg
                     if (introfordruids == 1)
                     {
                         Console.Clear();
-                        Console.Write("Друиды ");
-                        Thread.Sleep(200);
-                        Console.Write("- жрецы ");
-                        Thread.Sleep(200);
-                        Console.Write("у древних ");
-                        Thread.Sleep(200);
-                        Console.Write("кельтских народов, ");
-                        Thread.Sleep(200);
-                        Console.Write("организованные в виде");
-                        Thread.Sleep(200);
-                        Console.Write(" замкнутого, ");
-                        Thread.Sleep(200);
-                        Console.Write("но не ");
-                        Thread.Sleep(200);
-                        Console.Write("наследственного сословия");
-                        Thread.Sleep(200);
-                        Console.WriteLine(" ");
-                        Console.Write("                                  ");
-                        Thread.Sleep(200);
-                        Console.Write("Б");
-                        Thread.Sleep(200);
-                        Console.Write("у");
-                        Thread.Sleep(200);
-                        Console.Write("");
-                        Thread.Sleep(200);
-                        Console.Write("д");
-                        Thread.Sleep(200);
-                        Console.Write("ь");
-                        Thread.Sleep(200);
-                        Console.Write("т");
-                        Thread.Sleep(200);
-                        Console.Write("е");
-                        Thread.Sleep(200);
-                        Console.Write(" ");
-                        Console.Write("акк");
-                        Thread.Sleep(200);
-                        Console.Write("ур");
-                        Thread.Sleep(200);
-                        Console.Write("ат");
-                        Thread.Sleep(200);
-                        Console.Write("ны");
-                        Thread.Sleep(200);
-                        Console.Write("!");
-                        Thread.Sleep(4000);
+                        foreach (char druidintrolol in introdruidD)
+                        {
+                            Console.Write(druidintrolol);
+                            Thread.Sleep(50);
+                        }
+                        Thread.Sleep(3000);
                         Console.Clear();
                     }
                     Console.Clear();
@@ -1195,7 +1986,8 @@ namespace rpg
                     Console.WriteLine($@"        /     \                       /       \      |                     /         \                                    ");
                     Console.WriteLine($@"       /       \                     /         \     |                    /           \                                   ");
                     Console.WriteLine($@"   ___/         \___            ____/           \____|               ____/             \____                                             ");
-                    Console.WriteLine($@"  4. Выйти                                             ");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine(" \n 4. Выйти                                             ");
                     int Druidnumber = Convert.ToInt32(Console.ReadLine());
                     if (Druidnumber == 1)
                     {
@@ -1203,14 +1995,11 @@ namespace rpg
 
                         while (druidmechnikhp > 0)
                         {
-                            if (HealthPlayerDefault < HealthPlayer)
-                            {
-                                HealthPlayer = HealthPlayerDefault;
-                            }
+                            proverkahp();
                             Console.WriteLine($@"                                                                                                                  ");
                             Console.WriteLine($@"                                                                                                                  ");
                             Console.WriteLine($@"                                                                                                               ");
-                            Console.WriteLine($@"            Твое Здоровье: {HealthPlayer}                                                                                             ");
+                            Console.WriteLine($@"            Твое Здоровье: {HealthPlayer} / {HealthPlayerDefault} Мана {mana} / {manamax}                                                                                            ");
                             Console.WriteLine($@"                                                                                                               ");
                             Console.WriteLine($@"                                                                                                                  ");
                             Console.WriteLine($@"     Друид-Мечник                                         ");
@@ -1235,18 +2024,15 @@ namespace rpg
                             Console.WriteLine($@"        /     \                                              ");
                             Console.WriteLine($@"       /       \                                             ");
                             Console.WriteLine($@"   ___/         \___                                         ");
-                            Console.WriteLine($@"   1. Атаковать    2. Защищаться    3. Назад В Меню  ");
+                            Console.WriteLine($@"   1. Атаковать  2. Атаковать с помощью магии   3. Инвентарь 4. Назад В Меню  ");
                             int fightdruidmechnik = Convert.ToInt32(Console.ReadLine());
                             if (fightdruidmechnik == 1)
                             {
-                                druidmechnikhp -= (DamagePlayer - druidmechnikdef);
+                                druidmechnikhp -= (DamagePlayer - (druidmechnikdef - andef));
                                 HealthPlayer -= (druidmechnikdam - DefensePlayer);
                                 if (kripscrabobikshp > 0)
                                 {
-                                    if (HealthPlayerDefault < HealthPlayer)
-                                    {
-                                        HealthPlayer = HealthPlayerDefault;
-                                    }
+                                    proverkahp();
                                     Console.WriteLine("Ты проиграл...");
                                     Console.Clear();
                                     if (druidmechnikhp <= 0)
@@ -1268,16 +2054,17 @@ namespace rpg
                             }
                             if (fightdruidmechnik == 2)
                             {
-                                HealthPlayer -= (druidmonahdam - (DefensePlayer * 2));
-                                Console.Clear();
+                                proverkahp();
+                                usemag();
+                                int druidmechniksposvib = Convert.ToInt32((Console.ReadLine())); 
                             }
                             if (fightdruidmechnik == 3)
                             {
-                                break;
+                                invent();
                             }
                             if (fightdruidmechnik >= 4)
                             {
-                                Console.WriteLine("Такого действия нет");
+                                break;
                             }
 
                         }
@@ -1313,11 +2100,11 @@ namespace rpg
                             Console.WriteLine($@"        /       \      |                 Защита: {druidmonahdef}                               ");
                             Console.WriteLine($@"       /         \     |                                          ");
                             Console.WriteLine($@"  ____/           \____|                                 ");
-                            Console.WriteLine($@"   1. Атаковать    2. Защищаться    3. Назад В Меню  ");
+                            Console.WriteLine($@"   1. Атаковать  2. Атаковать с помощью магии   3. Инвентарь 4. Назад В Меню  ");
                             int fightdruidmonah = Convert.ToInt32(Console.ReadLine());
                             if (fightdruidmonah == 1)
                             {
-                                druidmonahhp -= (DamagePlayer - druidmonahdef);
+                                druidmonahhp -= (DamagePlayer - (druidmonahdef - andef));
                                 HealthPlayer -= (druidmonahdam - DefensePlayer);
                                 if (druidmonahhp > 0)
                                 {
@@ -1339,17 +2126,18 @@ namespace rpg
                                     nummenu -= 1;
                                     money += randcenadruidmonahdva;
                                     Console.Clear();
+                                    xp += 450;
                                 }
                                 else if (HealthPlayer <= 0)
                                 {
                                     Console.WriteLine("Ты умер(");
                                 }
                             }
-
                             else if (fightdruidmonah == 2)
                             {
-                                HealthPlayer -= (druidmonahdam - (DefensePlayer * 2));
-                                Console.Clear();
+                                proverkahp();
+                                usemag();
+
                             }
                             else if (fightdruidmonah == 3)
                             {
@@ -1402,7 +2190,7 @@ namespace rpg
                             int fightdruidkiller = Convert.ToInt32(Console.ReadLine());
                             if (fightdruidkiller == 1)
                             {
-                                druidkillerhp -= (DamagePlayer - druidkillerdef);
+                                druidkillerhp -= (DamagePlayer - (druidkillerdef - andef));
                                 HealthPlayer -= (druidkillerdam - DefensePlayer);
                                 if (druidmonahhp > 0)
                                 {
@@ -1421,6 +2209,7 @@ namespace rpg
                                             nummenu -= 1;
                                             money += randcenadruidkilertri;
                                             Console.Clear();
+                                            xp += 1000;
                                         }
                                         else if (HealthPlayer <= 0)
                                         {
@@ -1461,70 +2250,11 @@ namespace rpg
                     introfortralls += 1;
                     if (introfortralls == 1)
                     {
-                        Console.Write(ostrovT, " - это очень опасное масто для простых людей,");
-                        Console.Write(" - ");
-                        Thread.Sleep(100);
-                        Console.Write("это ");
-                        Thread.Sleep(100);
-                        Console.Write("очень ");
-                        Thread.Sleep(100);
-                        Console.Write("о");
-                        Thread.Sleep(100);
-                        Console.Write("п");
-                        Thread.Sleep(100);
-                        Console.Write("а");
-                        Thread.Sleep(100);
-                        Console.Write("с");
-                        Thread.Sleep(100);
-                        Console.Write("н");
-                        Thread.Sleep(100);
-                        Console.Write("о");
-                        Thread.Sleep(100);
-                        Console.Write("е ");
-                        Thread.Sleep(100);
-                        Console.Write("м");
-                        Thread.Sleep(100);
-                        Console.Write("е");
-                        Thread.Sleep(100);
-                        Console.Write("с");
-                        Thread.Sleep(100);
-                        Console.Write("т");
-                        Thread.Sleep(100);
-                        Console.WriteLine("о");
-                        Thread.Sleep(100);
-                        Console.Write("т");
-                        Thread.Sleep(100);
-                        Console.Write("а");
-                        Thread.Sleep(100);
-                        Console.Write("к ");
-                        Thread.Sleep(100);
-                        Console.Write("ч");
-                        Thread.Sleep(100);
-                        Console.Write("т");
-                        Thread.Sleep(100);
-                        Console.Write("о ");
-                        Thread.Sleep(100);
-                        Console.Write("б");
-                        Thread.Sleep(100);
-                        Console.Write("у");
-                        Thread.Sleep(100);
-                        Console.Write("д");
-                        Thread.Sleep(100);
-                        Console.Write("ь");
-                        Thread.Sleep(100);
-                        Console.Write("т");
-                        Thread.Sleep(100);
-                        Console.Write("е ");
-                        Thread.Sleep(100);
-                        Console.Write("вн");
-                        Thread.Sleep(100);
-                        Console.Write("им");
-                        Thread.Sleep(100);
-                        Console.Write("ат");
-                        Thread.Sleep(100);
-                        Console.Write("ель");
-                        Thread.Sleep(100);
-                        Console.Write("ней!");
+                        foreach (char ostrovTrall in ostrovT)
+                        {
+                            Console.Write(ostrovTrall);
+                            Thread.Sleep(50);
+                        }
                         Thread.Sleep(2000);
                         Console.Clear();
                     }
@@ -1619,7 +2349,7 @@ namespace rpg
                             int fighttrallohotnik = Convert.ToInt32(Console.ReadLine());
                             if (fighttrallohotnik == 1)
                             {
-                                trallohotnikhp -= DamagePlayer - trallohotnikdef;
+                                trallohotnikhp -= DamagePlayer - (trallohotnikdef - andef);
                                 HealthPlayer -= trallohotnikdam - DefensePlayer;
                                 if (trallohotnikhp < 0)
                                 {
@@ -1638,6 +2368,7 @@ namespace rpg
                                             nummenu -= 1;
                                             money += randcenatrallohotnikodin;
                                             Console.Clear();
+                                            xp += 5000;
                                         }
                                         else if (HealthPlayer <= 0)
                                         {
@@ -1659,7 +2390,6 @@ namespace rpg
                             {
                                 Console.WriteLine("Такого действия нет");
                             }
-
                         }
                     }
                     if (fighttrall == 2)
@@ -1713,9 +2443,9 @@ namespace rpg
                             {
                                 if (trallshamanhp > 0)
                                 {
-                                trallshamanhp -= (DamagePlayer - trallshamandef);
+                                trallshamanhp -= (DamagePlayer - (trallshamandef - andef));
                                 HealthPlayer -= (trallshamandamphys - DefensePlayer);
-                                HealthPlayer -= (trallshamandammage - (DefensePlayer / 2));
+                                HealthPlayer -= (trallshamandammage - (DefensePlayer / 2 + defmag));
                                 
                                     if (HealthPlayerDefault < HealthPlayer)
                                     {
@@ -1732,6 +2462,7 @@ namespace rpg
                                             nummenu -= 1;
                                             money += randcenatrallshamandva;
                                             Console.Clear();
+                                            xp += 10000;
                                         }
                                         else if (HealthPlayer <= 0)
                                         {
@@ -1805,7 +2536,7 @@ namespace rpg
                             
                             if (tralltankhp > 0)
                             {
-                                    tralltankhp -= (DamagePlayer - tralltankdef);
+                                    tralltankhp -= (DamagePlayer - (tralltankdef - andef));
                                     HealthPlayer -= (tralltankdam - DefensePlayer);
                                     if (HealthPlayerDefault < HealthPlayer)
                                     {
@@ -1822,7 +2553,8 @@ namespace rpg
                                             nummenu -= 1;
                                             money += randcenatralltanktri;
                                             Console.Clear();
-                                        }
+                                        xp += 36000;
+                                    }
                                         else if (HealthPlayer <= 0)
                                         {
                                             Console.WriteLine("Ты умер...");
@@ -1846,17 +2578,165 @@ namespace rpg
                     }
                 }
                 }
-                //обновить главное меню
+                //аптечка
                 else if (MainMenu == 6)
                     {
-                        Console.Clear();
+                    Console.Clear();
+                    Console.WriteLine($@"    У тебя {HealthPlayer} / {HealthPlayerDefault} здоровья                      ");
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine($@"                                                                                ");
+                    Console.WriteLine($@"   1. Малая Аптечка (+{malayaapthp} hp) Стоимость: 30 §                                    ");
+                    Console.WriteLine($@"  ------------------------------                                                ");
+                    Console.WriteLine($@"   2. Простая Аптечка (+{srapthp} hp) Стоимость: 75 §                                  ");
+                    Console.WriteLine($@"  ------------------------------                                                ");
+                    Console.WriteLine($@"   3. Большая Аптечка (+{bolapthp} hp) Стоимость: 125 §                                 ");
+                    Console.WriteLine($@"  ------------------------------                                                ");
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    Console.WriteLine($@"   4. Малая Бутыль Маны (+{malayamanamn} mp) Стоимость: 30 §                                ");
+                    Console.WriteLine($@"  ------------------------------                                                ");
+                    Console.WriteLine($@"   5. Средняя Бутыль Маны (+{srmanamn} mp) Стоимость: 75 §                              ");
+                    Console.WriteLine($@"  ------------------------------                                                ");
+                    Console.WriteLine($@"   6. Большая Бутыль Маны (+{bolmanamn} mp) Стоимость: 125 §                            ");
+                    Console.WriteLine($@"  ------------------------------                                                ");
+                    Console.ForegroundColor = ConsoleColor.DarkMagenta;
+                    Console.WriteLine($@"   7. Магическое Зелье (+{manaiapthp} hp, +{manaiaptmn} mp) Стоимость: 200 §                          ");
+                    Console.WriteLine($@"  ------------------------------                                                ");
+                    Console.WriteLine($@"                                                                                ");
+                    Console.WriteLine($@"                                                                                ");
+                    Console.WriteLine($@"                                                                                ");
+                    Console.WriteLine($@"                                                                                ");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine($@"  8. Назад                                                                              ");
+                    Console.WriteLine($@"                                                                                ");
+                    int apteka = Convert.ToInt32(Console.ReadLine());
+                    if (apteka == 1)
+                    {
+                        Console.WriteLine("Вам с собой? (В инвентарь?) да/нет");
+                        string ssoboi = Console.ReadLine();
+                        if (ssoboi == "да" || ssoboi == "Да" || ssoboi == "дА" || ssoboi == "ДА")
+                        {
+                            money -= 30;
+                            malayaapt += 1;
+                        }
+                        else if (ssoboi == "НЕТ" || ssoboi == "НЕт" ||ssoboi == "НеТ" ||ssoboi == "нЕТ" ||ssoboi == "Нет" ||ssoboi == "неТ" ||ssoboi == "нЕт" ||ssoboi == "нет" )
+                        {
+                        money -= 30;
+                        HealthPlayer += malayaapthp;
+                        }    
                     }
-                //+ деньги
+                    else if (apteka == 2)
+                    {
+                        Console.WriteLine("Вам с собой? (В инвентарь?) да/нет");
+                        string ssoboi = Console.ReadLine();
+                        if (ssoboi == "да" || ssoboi == "Да" || ssoboi == "дА" || ssoboi == "ДА")
+                        {
+                            money -= 75;
+                            srapt += 1;
+                        }
+                        else if (ssoboi == "НЕТ" || ssoboi == "НЕт" ||ssoboi == "НеТ" ||ssoboi == "нЕТ" ||ssoboi == "Нет" ||ssoboi == "неТ" ||ssoboi == "нЕт" ||ssoboi == "нет" )
+                        {
+                        money -= 75;
+                        HealthPlayer += srapthp;
+                        }    
+                    }
+                    else if (apteka == 3)
+                    {
+                        Console.WriteLine("Вам с собой? (В инвентарь?) да/нет");
+                        string ssoboi = Console.ReadLine();
+                        if (ssoboi == "да" || ssoboi == "Да" || ssoboi == "дА" || ssoboi == "ДА")
+                        {
+                            money -= 125;
+                            bolapt += 1;
+                        }
+                        else if (ssoboi == "НЕТ" || ssoboi == "НЕт" ||ssoboi == "НеТ" ||ssoboi == "нЕТ" ||ssoboi == "Нет" ||ssoboi == "неТ" ||ssoboi == "нЕт" ||ssoboi == "нет" )
+                        {
+                        money -= 125;
+                        HealthPlayer += bolapthp;
+                        }    
+                    }
+                    else if (apteka == 4)
+                    {
+                        Console.WriteLine("Вам с собой? (В инвентарь?) да/нет");
+                        string ssoboi = Console.ReadLine();
+                        if (ssoboi == "да" || ssoboi == "Да" || ssoboi == "дА" || ssoboi == "ДА")
+                        {
+                            money -= 30;
+                            malayamana += 1;
+                        }
+                        else if (ssoboi == "НЕТ" || ssoboi == "НЕт" ||ssoboi == "НеТ" ||ssoboi == "нЕТ" ||ssoboi == "Нет" ||ssoboi == "неТ" ||ssoboi == "нЕт" ||ssoboi == "нет" )
+                        {
+                        money -= 30;
+                        mana += malayamanamn;
+                        }    
+                    }
+                    else if (apteka == 5)
+                    {
+                        Console.WriteLine("Вам с собой? (В инвентарь?) да/нет");
+                        string ssoboi = Console.ReadLine();
+                        if (ssoboi == "да" || ssoboi == "Да" || ssoboi == "дА" || ssoboi == "ДА")
+                        {
+                            money -= 75;
+                            srmana += 1;
+                        }
+                        else if (ssoboi == "НЕТ" || ssoboi == "НЕт" ||ssoboi == "НеТ" ||ssoboi == "нЕТ" ||ssoboi == "Нет" ||ssoboi == "неТ" ||ssoboi == "нЕт" ||ssoboi == "нет" )
+                        {
+                        money -= 75;
+                        mana += srmanamn;
+                        }    
+                    }
+                    else if (apteka == 6)
+                    {
+                        Console.WriteLine("Вам с собой? (В инвентарь?) да/нет");
+                        string ssoboi = Console.ReadLine();
+                        if (ssoboi == "да" || ssoboi == "Да" || ssoboi == "дА" || ssoboi == "ДА")
+                        {
+                            money -= 125;
+                            bolmana += 1;
+                        }
+                        else if (ssoboi == "НЕТ" || ssoboi == "НЕт" ||ssoboi == "НеТ" ||ssoboi == "нЕТ" ||ssoboi == "Нет" ||ssoboi == "неТ" ||ssoboi == "нЕт" ||ssoboi == "нет" )
+                        {
+                        money -= 125;
+                        mana += bolmanamn;
+                        }    
+                    }
+                    else if (apteka == 7)
+                    {
+                        Console.WriteLine("Вам с собой? (В инвентарь?) да/нет");
+                        string ssoboi = Console.ReadLine();
+                        if (ssoboi == "да" || ssoboi == "Да" || ssoboi == "дА" || ssoboi == "ДА")
+                        {
+                            money -= 200;
+                            manaiapt += 1;
+                        }
+                        else if (ssoboi == "НЕТ" || ssoboi == "НЕт" ||ssoboi == "НеТ" ||ssoboi == "нЕТ" ||ssoboi == "Нет" ||ssoboi == "неТ" ||ssoboi == "нЕт" ||ssoboi == "нет" )
+                        {
+                        money -= 200;
+                        mana += manaiaptmn;
+                        HealthPlayer += manaiapthp;
+                        }    
+                    }
+                }
+                //инвентарь             
                 else if (MainMenu == 7)
+                {
+                    invent();
+                }
+                //+ что то
+                else if (MainMenu == 228)
                     {
                         money += 9999;
+                        xp += 1000;
+                        chaosmeteorproverka += 1;
+                        fireblastproverka += 1;
+                        manamax += 9999;
+                        mana += 9999;
+                        DefensePlayer += 40;
+                        HealthPlayerDefault += 2000;
+                        HealthPlayer *= 100;
+                        introforcrabs += 1;
                     }
-                else if (MainMenu == 8)
+                //+ все
+                else if (MainMenu == 1337)
                 {
                     HealthPlayerDefault += 1000000;
                     Damagep += 2000;
@@ -1865,13 +2745,18 @@ namespace rpg
                     introfortralls += 1;
                     introfordruids += 1;
                 }
-                else if (MainMenu >= 9)
+                else if (MainMenu == 609)
+                {
+                    defense += 400000;
+                    HealthPlayerDefault += 1000000;
+                }
+                else if (MainMenu >= 8)
                     {
                         Console.Clear();
                         Console.WriteLine("Такого меню нет");
                     }
                 Thread.Sleep(500);
-                }
             }
         }
     }
+}
