@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Threading;
 
 namespace rpg
@@ -9,7 +10,7 @@ namespace rpg
         {
             //все переменные
             int percent = 100;
-            int x = 1;
+            string sohranenie = "./db.txt";
             int MainMenu = 0;
             int cena0 = 1;
             int cena1 = 5;
@@ -100,7 +101,6 @@ namespace rpg
             int andef = 0;
             int mana = 100;
             int manamax = 100;
-            
             int fireblastmanacoast = 60;
             int chaosmeteormanacoast = 45;
             int chaosmeteorproverka = 0;
@@ -325,6 +325,76 @@ namespace rpg
             string introostrovK = ostrovK + " - это очень опасное место для простых людей,\n\tтак что будьте внимательней!!!";
             string introdruidD = "Друиды - жрецы у древних кельтских народов, организованные в виде замкнутого, но не наследственного сословия \n\t\tБудьте аккуратны!!!";
             string introTralls = ostrovT + " - это очень опасное место для простых людей,\n\tбудьте внимаетельней!!!";
+            void zagr()
+            {
+                StreamReader sr = new
+                StreamReader(sohranenie);
+                malayaapt = int.Parse(sr.ReadLine());
+                srapt = int.Parse(sr.ReadLine());
+                bolapt = int.Parse(sr.ReadLine());
+                malayamana = int.Parse(sr.ReadLine());
+                srmana = int.Parse(sr.ReadLine());
+                bolmana = int.Parse(sr.ReadLine());
+                manaiapt = int.Parse(sr.ReadLine());
+                money = int.Parse(sr.ReadLine());
+                chaosmeteorproverka = int.Parse(sr.ReadLine());
+                fireblastproverka = int.Parse(sr.ReadLine());
+                andef = int.Parse(sr.ReadLine());
+                mana = int.Parse(sr.ReadLine());
+                manamax = int.Parse(sr.ReadLine());
+                xp = int.Parse(sr.ReadLine());
+                HealthPlayer = int.Parse(sr.ReadLine());
+                HealthPlayerDefault = float.Parse(sr.ReadLine());
+                defenseart = int.Parse(sr.ReadLine());
+                damageart = int.Parse(sr.ReadLine());
+                healthart = int.Parse(sr.ReadLine());
+                defense = int.Parse(sr.ReadLine());
+                bonusdam = int.Parse(sr.ReadLine());
+                Damagep = int.Parse(sr.ReadLine());
+                obschdef = int.Parse(sr.ReadLine());
+                obschdam = int.Parse(sr.ReadLine());
+                obschdefarm = int.Parse(sr.ReadLine());
+                defmag = int.Parse(sr.ReadLine());
+                NAME = String.Format(sr.ReadLine());
+                sposobnostfb = String.Format(sr.ReadLine());
+                sposobnostcm = String.Format(sr.ReadLine());
+                sr.Close();
+            }
+            void sohr()
+            {
+                StreamWriter sw = new
+                StreamWriter("db.txt");
+                sw.WriteLine(malayaapt);
+                sw.WriteLine(srapt);
+                sw.WriteLine(bolapt);
+                sw.WriteLine(malayamana);
+                sw.WriteLine(srmana);
+                sw.WriteLine(bolmana);
+                sw.WriteLine(manaiapt);
+                sw.WriteLine(money);
+                sw.WriteLine(chaosmeteorproverka);
+                sw.WriteLine(fireblastproverka);
+                sw.WriteLine(andef );
+                sw.WriteLine(mana);
+                sw.WriteLine(manamax);
+                sw.WriteLine(xp);
+                sw.WriteLine(HealthPlayer);
+                sw.WriteLine(HealthPlayerDefault);
+                sw.WriteLine(defenseart);
+                sw.WriteLine(damageart);
+                sw.WriteLine(healthart);
+                sw.WriteLine(defense);
+                sw.WriteLine(bonusdam);
+                sw.WriteLine(Damagep);
+                sw.WriteLine(obschdef);
+                sw.WriteLine(obschdam);
+                sw.WriteLine(obschdefarm);
+                sw.WriteLine(defmag);
+                sw.WriteLine(NAME);
+                sw.WriteLine(sposobnostfb);
+                sw.WriteLine(sposobnostcm);
+                sw.Close();
+            }
             while (HealthPlayer > 0)
             {
                 string[] netmani = {"Нет маны", "Не хватает маны", "Маны НЕТ!!!", "НЕТТ МАНЫ!"};
@@ -537,7 +607,7 @@ namespace rpg
                 Console.WriteLine($@"                            \       /    |                Золото: {money} (§)                               ");
                 Console.WriteLine($@"                             \     /     |                 Всего анти защиты: {andef}                              7. Инвентарь       ");
                 Console.WriteLine($@"                                |        |                                                                  ");
-                Console.WriteLine($@"                                |        ┬              <--- Общий урон с меча:                             ");
+                Console.WriteLine($@"                                |        ┬              <--- Общий урон с меча:                      10. Меню с сохранениями       ");
                 Console.WriteLine($@"                         =======|========|                                  {obschdam}                      ");
                 Console.WriteLine($@"                                |        |        Хар-ики  с артефактов:                                    ");
                 Console.WriteLine($@"                                |        |                          хп: {artefakthp}                        ");
@@ -3288,6 +3358,43 @@ namespace rpg
                 else if (MainMenu == 7)
                 {
                     invent();
+                }
+                //сохранение
+                else if (MainMenu == 10)
+                {
+                    int proverka = 0;
+                    Console.Clear();
+                    Console.WriteLine("Что вы будете делать?");
+                    Console.WriteLine("1. Сохранение ");
+                    Console.WriteLine("2. Загрузить сохранение ");
+                    Console.WriteLine("Любое другое число: Выход ");
+                    int sohranenieilinet = Convert.ToInt32(Console.ReadLine());
+                    if (sohranenieilinet == 1)
+                    {
+                         sohr();
+                    }
+                    else if (sohranenieilinet == 2)
+                    {
+                        if (File.Exists(sohranenie))
+                        {
+                            proverka = 1;
+                        }
+                        else
+                        {
+                            proverka = 0;
+                        } 
+                        if (proverka == 1)
+                        {
+                            //тут загрузка сохранения
+                            zagr();
+                        }
+                        else if (proverka == 0)
+                        {
+                            Console.WriteLine("сохранения не вижу(");
+                        }
+                            
+                    } 
+                    Thread.Sleep(1000);
                 }
                 //+ все читы
                 else if (MainMenu == 9016)
